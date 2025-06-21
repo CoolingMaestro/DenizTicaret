@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yaz Kampanyası - Deniz Ticaret</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+tailwind.config={
+theme:{
+extend:{
+colors:{
+primary:'#0099cc',
+secondary:'#005580'
+},
+borderRadius:{
+'none':'0px',
+'sm':'4px',
+DEFAULT:'8px',
+'md':'12px',
+'lg':'16px',
+'xl':'20px',
+'2xl':'24px',
+'3xl':'32px',
+'full':'9999px',
+'button':'8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.campaign-hero {
+background: linear-gradient(135deg, #0099cc 0%, #005580 100%);
+}
+input:focus {
+outline: none;
+}
+.product-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+</style>
+</head>
+<body class="bg-gray-50 font-sans">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white shadow-md">
+<div class="container mx-auto px-4">
+<div class="flex items-center justify-between py-4">
+<!-- Logo -->
+<div class="flex items-center">
+<a href="#" class="flex items-center">
+<div class="text-primary text-3xl font-['Pacifico']">Deniz</div>
+<div class="ml-1 text-gray-700 text-lg">Ticaret</div>
+</a>
+</div>
+<!-- Navigation -->
+<nav class="hidden md:flex space-x-8">
+<a href="index.html" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">ANASAYFA</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">KURUMSAL</a>
+<a href="Tüm-Ürünleri-Listele.html" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">ÜRÜNLER</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">DEKOR VE HEDİYELİK</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">İLETİŞİM</a>
+</nav>
+<!-- Search and Language -->
+<div class="flex items-center space-x-4">
+<div class="hidden md:flex items-center bg-gray-100 rounded-button overflow-hidden">
+<input type="text" placeholder="Ürün arayın..." class="bg-transparent border-none px-4 py-2 text-sm w-48">
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap">
+<i class="ri-search-line"></i>
+</button>
+</div>
+<div class="flex items-center space-x-2">
+<a href="#" class="text-gray-700 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-global-line ri-lg"></i>
+</div>
+</a>
+<a href="Sepet-Görüntüleme-Sayfası.html" class="text-gray-700 hover:text-primary relative">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-shopping-cart-line ri-lg"></i>
+</div>
+</a>
+</div>
+<button class="md:hidden w-10 h-10 flex items-center justify-center">
+<i class="ri-menu-line ri-xl"></i>
+</button>
+</div>
+</div>
+</div>
+</header>
+
+<!-- Campaign Hero Section -->
+<section class="campaign-hero text-white py-16">
+<div class="container mx-auto px-4">
+<div class="text-center">
+<h1 class="text-4xl md:text-5xl font-bold mb-4">🎉 Yaz Kampanyası</h1>
+<p class="text-xl mb-8">Tüm Navigasyon Ekipmanlarında Büyük İndirimler</p>
+<div class="flex items-center justify-center gap-4 animate-pulse">
+<div class="flex items-center bg-white/20 backdrop-blur px-6 py-3 !rounded-button">
+<i class="ri-timer-flash-line text-white mr-2"></i>
+<span class="font-medium">Kampanya Bitimine Son:</span>
+<span class="ml-2 font-bold countdown">05:23:45</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Campaign Details Section -->
+<section class="py-12">
+<div class="container mx-auto px-4">
+<div class="max-w-4xl mx-auto">
+<div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">Kampanya Detayları</h2>
+<div class="grid md:grid-cols-2 gap-8">
+<div>
+<h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+<span class="text-2xl mr-2">🎯</span> Kampanya Avantajları
+</h3>
+<ul class="space-y-3">
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-green-500 mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-700">Tüm Navigasyon Ekipmanlarında %25 İndirim</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-green-500 mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-700">500₺ Üzeri Alışverişlerde Ücretsiz Kargo</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-green-500 mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-700">İlk Alışverişe Özel %10 Extra İndirim</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-green-500 mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-700">Havale/EFT ile Ödemelerde %5 Extra İndirim</span>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+<span class="text-2xl mr-2">📋</span> Kampanya Koşulları
+</h3>
+<ul class="space-y-3">
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-blue-500 mr-2">
+<i class="ri-information-line"></i>
+</div>
+<span class="text-gray-700">İndirimler birleştirilemez</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-blue-500 mr-2">
+<i class="ri-information-line"></i>
+</div>
+<span class="text-gray-700">Stoklar ile sınırlıdır</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-blue-500 mr-2">
+<i class="ri-information-line"></i>
+</div>
+<span class="text-gray-700">Kampanya başka kampanyalarla birleştirilemez</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-blue-500 mr-2">
+<i class="ri-information-line"></i>
+</div>
+<span class="text-gray-700">Kampanya süresi: 21 Haziran - 21 Temmuz 2025</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- Campaign Products -->
+<div class="bg-white rounded-lg shadow-lg p-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-6">Kampanyalı Ürünler</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<!-- Product 1 -->
+<div class="product-card bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300">
+<div class="relative">
+<div class="absolute top-2 right-2 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+%25
+</div>
+<img src="https://readdy.ai/api/search-image?query=marine%2520compass%2C%2520ritchie%2520navigation%2520compass%2C%2520boat%2520dashboard%2520instrument%2C%2520detailed%2520product%2520photography%2520on%2520white%2520background%2C%2520high%2520quality%2520nautical%2520equipment&width=300&height=300&seq=1004&orientation=squarish" alt="Ritchie Trek TR-31G Işıklı Pusula" class="w-full h-48 object-contain p-4">
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-gray-800">Ritchie Trek TR-31G Işıklı Pusula</h3>
+<p class="text-gray-600 text-sm mt-1">Gece görüşü, su geçirmez yapı</p>
+<div class="mt-3">
+<div class="flex items-center gap-2 mb-2">
+<span class="text-gray-500 line-through text-sm">2450₺</span>
+<span class="font-bold text-red-600 text-lg">1838₺</span>
+</div>
+<a href="Ürün-Detay-Sayfası.html" class="block w-full bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-center text-sm font-medium">Detay</a>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="product-card bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300">
+<div class="relative">
+<div class="absolute top-2 right-2 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+%25
+</div>
+<img src="https://readdy.ai/api/search-image?query=marine%2520compass%2C%2520small%2520boat%2520compass%2C%2520nautical%2520navigation%2520instrument%2C%2520detailed%2520product%2520photography%2520on%2520white%2520background%2C%2520high%2520quality%2520nautical%2520equipment&width=300&height=300&seq=1003&orientation=squarish" alt="Mini-C Dönmez Pusula" class="w-full h-48 object-contain p-4">
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-gray-800">Mini-C Dönmez Pusula</h3>
+<p class="text-gray-600 text-sm mt-1">Kompakt boyut, yüksek hassasiyet</p>
+<div class="mt-3">
+<div class="flex items-center gap-2 mb-2">
+<span class="text-gray-500 line-through text-sm">1250₺</span>
+<span class="font-bold text-red-600 text-lg">938₺</span>
+</div>
+<a href="#" class="block w-full bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-center text-sm font-medium">Detay</a>
+</div>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="product-card bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300">
+<div class="relative">
+<div class="absolute top-2 right-2 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+%25
+</div>
+<img src="https://readdy.ai/api/search-image?query=marine%2520compass%2C%2520black%2520boat%2520compass%2C%2520professional%2520navigation%2520instrument%2C%2520detailed%2520product%2520photography%2520on%2520white%2520background%2C%2520high%2520quality%2520nautical%2520equipment&width=300&height=300&seq=1005&orientation=squarish" alt="Hors Pusula Beyaz" class="w-full h-48 object-contain p-4">
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-gray-800">Hors Pusula Beyaz</h3>
+<p class="text-gray-600 text-sm mt-1">Modern tasarım, kolay montaj</p>
+<div class="mt-3">
+<div class="flex items-center gap-2 mb-2">
+<span class="text-gray-500 line-through text-sm">1750₺</span>
+<span class="font-bold text-red-600 text-lg">1313₺</span>
+</div>
+<a href="#" class="block w-full bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-center text-sm font-medium">Detay</a>
+</div>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="product-card bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300">
+<div class="relative">
+<div class="absolute top-2 right-2 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+%25
+</div>
+<img src="https://readdy.ai/api/search-image?query=marine%2520navigation%2520light%2C%2520boat%2520LED%2520light%2C%2520nautical%2520equipment%2C%2520detailed%2520product%2520photography%2520on%2520white%2520background%2C%2520high%2520quality%2520nautical%2520equipment&width=300&height=300&seq=1010&orientation=squarish" alt="LED Seyir Feneri" class="w-full h-48 object-contain p-4">
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-gray-800">LED Seyir Feneri</h3>
+<p class="text-gray-600 text-sm mt-1">Düşük enerji tüketimi, uzun ömür</p>
+<div class="mt-3">
+<div class="flex items-center gap-2 mb-2">
+<span class="text-gray-500 line-through text-sm">1350₺</span>
+<span class="font-bold text-red-600 text-lg">1013₺</span>
+</div>
+<a href="#" class="block w-full bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-center text-sm font-medium">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 text-center">
+<a href="Tüm-Ürünleri-Listele.html" class="inline-block bg-primary hover:bg-primary/90 text-white px-8 py-3 !rounded-button font-medium transition-all duration-200 whitespace-nowrap">
+<span class="inline-flex items-center">
+Tüm Kampanyalı Ürünleri Gör
+<i class="ri-arrow-right-line ml-2"></i>
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-12 bg-gray-100">
+<div class="container mx-auto px-4">
+<div class="bg-primary rounded-lg p-8 text-center text-white">
+<h2 class="text-3xl font-bold mb-4">Kampanya Fırsatını Kaçırmayın!</h2>
+<p class="text-xl mb-8">Stoklar tükenmeden hemen alışverişe başlayın</p>
+<a href="Tüm-Ürünleri-Listele.html" class="inline-block bg-white text-primary hover:bg-gray-100 px-8 py-3 !rounded-button font-bold transition-all duration-200">
+Alışverişe Başla
+</a>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div>
+<div class="flex items-center mb-6">
+<div class="text-white text-3xl font-['Pacifico']">Deniz</div>
+<div class="ml-1 text-gray-300 text-lg">Ticaret</div>
+</div>
+<p class="text-gray-400 mb-6">20 yılı aşkın tecrübemiz ile denizcilik sektöründe kaliteli ve güvenilir ürünlerin adresi.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-twitter-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-linkedin-fill"></i>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Hızlı Erişim</h4>
+<ul class="space-y-3">
+<li><a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-200">Anasayfa</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Hakkımızda</a></li>
+<li><a href="Tüm-Ürünleri-Listele.html" class="text-gray-400 hover:text-white transition-colors duration-200">Ürünlerimiz</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Referanslar</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">İletişim</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Ürün Kategorileri</h4>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Navigasyon Ekipmanları</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Güverte Donanımları</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Elektrik & Elektronik</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Güvenlik Ekipmanları</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Dekorasyon & Aksesuar</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Bültenimize Abone Olun</h4>
+<p class="text-gray-400 mb-4">Yeni ürünler ve kampanyalardan haberdar olmak için bültenimize abone olun.</p>
+<div class="flex">
+<input type="email" placeholder="E-posta adresiniz" class="flex-grow px-4 py-2 bg-gray-700 border border-gray-600 rounded-l-button text-white focus:outline-none focus:border-primary">
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-button whitespace-nowrap">Abone Ol</button>
+</div>
+<div class="mt-6">
+<h5 class="font-medium mb-3">Ödeme Yöntemleri</h5>
+<div class="flex space-x-3">
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-visa-fill ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-mastercard-fill ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-paypal-fill ri-lg"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-700 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 Deniz Ticaret. Tüm hakları saklıdır.</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-200">Gizlilik Politikası</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-200">Kullanım Koşulları</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-200">Çerez Politikası</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+<script id="countdown">
+document.addEventListener('DOMContentLoaded', function() {
+const countdownElement = document.querySelector('.countdown');
+if (countdownElement) {
+function updateCountdown() {
+const now = new Date();
+const endTime = new Date();
+endTime.setHours(23, 59, 59);
+const timeDiff = endTime - now;
+if (timeDiff <= 0) {
+countdownElement.textContent = "00:00:00";
+return;
+}
+const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+countdownElement.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+}
+});
+</script>
+</body>
+</html>
