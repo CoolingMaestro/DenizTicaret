@@ -712,35 +712,7 @@ event.stopPropagation();
 });
 const cartDropdownViewCart = document.getElementById('cartDropdownViewCart');
 cartDropdownViewCart.addEventListener('click', function() {
-cartDropdown.classList.add('hidden');
-const toast = document.createElement('div');
-toast.className = 'fixed top-4 right-4 bg-white shadow-lg rounded-lg p-4 z-50 flex items-center min-w-[320px] transform transition-all duration-300 translate-x-full';
-toast.innerHTML = `
-<div class="w-10 h-10 flex items-center justify-center bg-blue-100 text-primary rounded-full mr-3">
-<i class="ri-information-line ri-lg"></i>
-</div>
-<div class="flex-1">
-<p class="font-medium text-gray-800">Bilgi</p>
-<p class="text-gray-600 text-sm">Zaten sepet sayfasındasınız</p>
-</div>
-<button class="text-gray-400 hover:text-gray-600 ml-2">
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-close-line"></i>
-</div>
-</button>
-`;
-document.body.appendChild(toast);
-requestAnimationFrame(() => {
-toast.classList.remove('translate-x-full');
-});
-toast.querySelector('button').addEventListener('click', function() {
-toast.classList.add('translate-x-full');
-setTimeout(() => toast.remove(), 300);
-});
-setTimeout(() => {
-toast.classList.add('translate-x-full');
-setTimeout(() => toast.remove(), 300);
-}, 2000);
+window.location.href = 'Sepet-Görüntüleme-Sayfası.html';
 });
 const decreaseBtns = document.querySelectorAll('.bg-gray-200:has(.ri-subtract-line)');
 const increaseBtns = document.querySelectorAll('.bg-gray-200:has(.ri-add-line)');
