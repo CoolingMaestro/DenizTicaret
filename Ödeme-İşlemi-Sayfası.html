@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ödeme - Deniz Ticaret</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+tailwind.config={
+theme:{
+extend:{
+colors:{
+primary:'#0099cc',
+secondary:'#005580'
+},
+borderRadius:{
+'none':'0px',
+'sm':'4px',
+DEFAULT:'8px',
+'md':'12px',
+'lg':'16px',
+'xl':'20px',
+'2xl':'24px',
+'3xl':'32px',
+'full':'9999px',
+'button':'8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+input:focus, textarea:focus, select:focus {
+outline: none;
+}
+.custom-number-input::-webkit-inner-spin-button,
+.custom-number-input::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.custom-number-input {
+-moz-appearance: textfield;
+}
+.custom-radio input[type="radio"] {
+display: none;
+}
+.custom-radio input[type="radio"] + label {
+position: relative;
+padding-left: 28px;
+cursor: pointer;
+display: inline-block;
+}
+.custom-radio input[type="radio"] + label:before {
+content: '';
+position: absolute;
+left: 0;
+top: 0;
+width: 20px;
+height: 20px;
+border: 2px solid #d1d5db;
+border-radius: 50%;
+background: #fff;
+}
+.custom-radio input[type="radio"]:checked + label:before {
+border-color: #0099cc;
+}
+.custom-radio input[type="radio"]:checked + label:after {
+content: '';
+position: absolute;
+left: 5px;
+top: 5px;
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background: #0099cc;
+}
+.custom-checkbox input[type="checkbox"] {
+display: none;
+}
+.custom-checkbox input[type="checkbox"] + label {
+position: relative;
+padding-left: 28px;
+cursor: pointer;
+display: inline-block;
+}
+.custom-checkbox input[type="checkbox"] + label:before {
+content: '';
+position: absolute;
+left: 0;
+top: 0;
+width: 20px;
+height: 20px;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+background: #fff;
+}
+.custom-checkbox input[type="checkbox"]:checked + label:before {
+border-color: #0099cc;
+background: #0099cc;
+}
+.custom-checkbox input[type="checkbox"]:checked + label:after {
+content: '\ea12';
+font-family: 'remixicon';
+position: absolute;
+left: 3px;
+top: 0px;
+font-size: 14px;
+color: white;
+}
+.switch {
+position: relative;
+display: inline-block;
+width: 44px;
+height: 24px;
+}
+.switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .3s;
+border-radius: 34px;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .3s;
+border-radius: 50%;
+}
+input:checked + .slider {
+background-color: #0099cc;
+}
+input:checked + .slider:before {
+transform: translateX(20px);
+}
+</style>
+</head>
+<body class="bg-gray-50 font-sans">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white shadow-md">
+<div class="container mx-auto px-4">
+<div class="flex items-center justify-between py-4">
+<!-- Logo -->
+<div class="flex items-center">
+<a href="#" class="flex items-center">
+<div class="text-primary text-3xl font-['Pacifico']">Deniz</div>
+<div class="ml-1 text-gray-700 text-lg">Ticaret</div>
+</a>
+</div>
+<!-- Navigation -->
+<nav class="hidden md:flex space-x-8">
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/752f4e94-d540-4a96-aaa1-1a7c7c05446d" data-readdy="true" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">ANASAYFA</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">KURUMSAL</a>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/d7842858-4a4f-4cf7-acec-bada1b684259" data-readdy="true" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">ÜRÜNLER</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">DEKOR VE HEDİYELİK</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">İLETİŞİM</a>
+</nav>
+<!-- Search and Language -->
+<div class="flex items-center space-x-4">
+<div class="hidden md:flex items-center bg-gray-100 rounded-button overflow-hidden">
+<input type="text" placeholder="Ürün arayın..." class="bg-transparent border-none px-4 py-2 text-sm w-48">
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap">
+<i class="ri-search-line"></i>
+</button>
+</div>
+<div class="flex items-center space-x-2">
+<a href="#" class="text-gray-700 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-global-line ri-lg"></i>
+</div>
+</a>
+<div class="relative">
+<a href="#" class="text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-shopping-cart-line ri-lg"></i>
+<div class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">3</div>
+</div>
+</a>
+</div>
+</div>
+<button class="md:hidden w-10 h-10 flex items-center justify-center">
+<i class="ri-menu-line ri-xl"></i>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Breadcrumb -->
+<div class="bg-gray-100 py-3">
+<div class="container mx-auto px-4">
+<div class="flex items-center text-sm text-gray-600">
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/752f4e94-d540-4a96-aaa1-1a7c7c05446d" data-readdy="true" class="hover:text-primary transition-colors">Anasayfa</a>
+<span class="mx-2">/</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/548dde31-f72f-4eac-b297-7de0653678ad" data-readdy="true" class="hover:text-primary transition-colors">Sepetim</a>
+<span class="mx-2">/</span>
+<span class="text-gray-800 font-medium">Ödeme</span>
+</div>
+</div>
+</div>
+<!-- Checkout Steps -->
+<div class="bg-white py-4 shadow-sm mb-6">
+<div class="container mx-auto px-4">
+<div class="flex justify-center">
+<div class="flex items-center">
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/548dde31-f72f-4eac-b297-7de0653678ad" data-readdy="true" class="flex flex-col items-center">
+<div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center mb-1">
+<i class="ri-shopping-cart-line"></i>
+</div>
+<span class="text-sm font-medium text-primary">Sepet</span>
+</a>
+<div class="w-16 h-1 bg-primary mx-2"></div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center mb-1">
+<i class="ri-bank-card-line"></i>
+</div>
+<span class="text-sm font-medium text-primary">Ödeme</span>
+</div>
+<div class="w-16 h-1 bg-gray-300 mx-2"></div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center mb-1">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-sm text-gray-500">Onay</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Checkout Section -->
+<section class="py-8">
+<div class="container mx-auto px-4">
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Left Column - Forms -->
+<div class="w-full lg:w-2/3">
+<!-- Delivery Address -->
+<div class="bg-white rounded-lg shadow-md p-6 mb-6">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-xl font-bold text-gray-800">Teslimat Adresi</h2>
+<button id="newAddressBtn" class="text-primary hover:text-primary/80 font-medium flex items-center transition-colors">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-add-line"></i>
+</div>
+<span>Yeni Adres Ekle</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<!-- Address Card 1 -->
+<div class="border border-primary bg-blue-50 rounded-lg p-4 relative">
+<div class="absolute top-4 right-4">
+<div class="custom-radio">
+<input type="radio" id="address1" name="delivery-address" checked>
+<label for="address1"></label>
+</div>
+</div>
+<h3 class="font-semibold text-gray-800 mb-1">Ev Adresi</h3>
+<p class="text-gray-700 font-medium mb-1">Ahmet Yılmaz</p>
+<p class="text-gray-600 text-sm mb-2">+90 532 123 45 67</p>
+<p class="text-gray-600 text-sm">Atatürk Mah. İstiklal Cad. No:42 D:5, Kadıköy, İstanbul, 34700</p>
+<div class="flex mt-3 space-x-3">
+<button class="text-gray-600 hover:text-primary text-sm flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-edit-line"></i>
+</div>
+<span>Düzenle</span>
+</button>
+<button class="text-gray-600 hover:text-red-500 text-sm flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-delete-bin-line"></i>
+</div>
+<span>Sil</span>
+</button>
+</div>
+</div>
+<!-- Address Card 2 -->
+<div class="border border-gray-200 rounded-lg p-4 relative">
+<div class="absolute top-4 right-4">
+<div class="custom-radio">
+<input type="radio" id="address2" name="delivery-address">
+<label for="address2"></label>
+</div>
+</div>
+<h3 class="font-semibold text-gray-800 mb-1">İş Adresi</h3>
+<p class="text-gray-700 font-medium mb-1">Ahmet Yılmaz</p>
+<p class="text-gray-600 text-sm mb-2">+90 532 123 45 67</p>
+<p class="text-gray-600 text-sm">Levent Mah. Büyükdere Cad. No:122 Kat:4, Şişli, İstanbul, 34330</p>
+<div class="flex mt-3 space-x-3">
+<button class="text-gray-600 hover:text-primary text-sm flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-edit-line"></i>
+</div>
+<span>Düzenle</span>
+</button>
+<button class="text-gray-600 hover:text-red-500 text-sm flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-delete-bin-line"></i>
+</div>
+<span>Sil</span>
+</button>
+</div>
+</div>
+</div>
+<!-- New Address Form (Hidden by default) -->
+<div id="newAddressForm" class="hidden border border-gray-200 rounded-lg p-5 mt-4">
+<h3 class="font-semibold text-gray-800 mb-4">Yeni Adres Ekle</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Adres Başlığı</label>
+<input type="text" placeholder="Örn: Ev, İş" class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Ad Soyad</label>
+<input type="text" placeholder="Ad Soyad" class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
+<input type="tel" placeholder="+90" class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">İl</label>
+<div class="relative">
+<select class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm appearance-none pr-8">
+<option value="">İl Seçiniz</option>
+<option value="istanbul">İstanbul</option>
+<option value="ankara">Ankara</option>
+<option value="izmir">İzmir</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-400"></i>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">İlçe</label>
+<div class="relative">
+<select class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm appearance-none pr-8">
+<option value="">İlçe Seçiniz</option>
+<option value="kadikoy">Kadıköy</option>
+<option value="besiktas">Beşiktaş</option>
+<option value="sisli">Şişli</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-400"></i>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Mahalle</label>
+<input type="text" placeholder="Mahalle" class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm">
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-gray-700 mb-1">Adres</label>
+<textarea rows="3" placeholder="Detaylı adres" class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm"></textarea>
+</div>
+</div>
+<div class="flex justify-end space-x-3">
+<button id="cancelAddressBtn" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 !rounded-button text-sm whitespace-nowrap">İptal</button>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Kaydet</button>
+</div>
+</div>
+</div>
+<!-- Billing Information -->
+<div class="bg-white rounded-lg shadow-md p-6 mb-6">
+<h2 class="text-xl font-bold text-gray-800 mb-4">Fatura Bilgileri</h2>
+<div class="mb-4">
+<div class="custom-checkbox">
+<input type="checkbox" id="sameAsDelivery" checked>
+<label for="sameAsDelivery" class="text-gray-700">Teslimat adresi ile aynı</label>
+</div>
+</div>
+<div id="billingForm" class="hidden">
+<div class="mb-4">
+<div class="flex space-x-6 mb-4">
+<div class="custom-radio">
+<input type="radio" id="individual" name="billing-type" checked>
+<label for="individual" class="text-gray-700">Bireysel</label>
+</div>
+<div class="custom-radio">
+<input type="radio" id="corporate" name="billing-type">
+<label for="corporate" class="text-gray-700">Kurumsal</label>
+</div>
+</div>
+</div>
+<div id="individualForm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">T.C. Kimlik No</label>
+<input type="text" placeholder="T.C. Kimlik No" class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Ad Soyad</label>
+<input type="text" placeholder="Ad Soyad" class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm">
+</div>
+</div>
+</div>
+<div id="corporateForm" class="hidden">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Vergi Dairesi</label>
+<input type="text" placeholder="Vergi Dairesi" class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Vergi No</label>
+<input type="text" placeholder="Vergi No" class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm">
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-gray-700 mb-1">Firma Adı</label>
+<input type="text" placeholder="Firma Adı" class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm">
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">İl</label>
+<div class="relative">
+<select class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm appearance-none pr-8">
+<option value="">İl Seçiniz</option>
+<option value="istanbul">İstanbul</option>
+<option value="ankara">Ankara</option>
+<option value="izmir">İzmir</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-400"></i>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">İlçe</label>
+<div class="relative">
+<select class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm appearance-none pr-8">
+<option value="">İlçe Seçiniz</option>
+<option value="kadikoy">Kadıköy</option>
+<option value="besiktas">Beşiktaş</option>
+<option value="sisli">Şişli</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-400"></i>
+</div>
+</div>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-gray-700 mb-1">Adres</label>
+<textarea rows="3" placeholder="Detaylı adres" class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm"></textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Payment Method -->
+<div class="bg-white rounded-lg shadow-md p-6 mb-6">
+<h2 class="text-xl font-bold text-gray-800 mb-6">Ödeme Yöntemi</h2>
+<div class="space-y-4">
+<div class="border border-primary rounded-lg overflow-hidden">
+<div class="flex items-center p-4 bg-blue-50 border-b border-primary">
+<div class="custom-radio">
+<input type="radio" id="creditCard" name="payment-method" checked>
+<label for="creditCard" class="text-gray-800 font-medium">Kredi Kartı / Banka Kartı</label>
+</div>
+</div>
+<div class="p-5">
+<div class="flex flex-wrap gap-3 mb-4">
+<div class="w-12 h-8 bg-gray-100 rounded flex items-center justify-center">
+<i class="ri-visa-fill ri-lg text-blue-700"></i>
+</div>
+<div class="w-12 h-8 bg-gray-100 rounded flex items-center justify-center">
+<i class="ri-mastercard-fill ri-lg text-red-500"></i>
+</div>
+<div class="w-12 h-8 bg-gray-100 rounded flex items-center justify-center">
+<i class="ri-bank-card-fill ri-lg text-gray-700"></i>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-gray-700 mb-1">Kart Üzerindeki İsim</label>
+<input type="text" placeholder="Kart Üzerindeki İsim" class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm">
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-gray-700 mb-1">Kart Numarası</label>
+<div class="relative">
+<input type="text" placeholder="0000 0000 0000 0000" class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm">
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2">
+<i class="ri-bank-card-line text-gray-400"></i>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">Son Kullanma Tarihi</label>
+<div class="flex space-x-2">
+<div class="relative w-1/2">
+<select class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm appearance-none pr-8">
+<option value="">Ay</option>
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-400"></i>
+</div>
+</div>
+<div class="relative w-1/2">
+<select class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm appearance-none pr-8">
+<option value="">Yıl</option>
+<option value="2025">2025</option>
+<option value="2026">2026</option>
+<option value="2027">2027</option>
+<option value="2028">2028</option>
+<option value="2029">2029</option>
+<option value="2030">2030</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-400"></i>
+</div>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">CVV/CVC</label>
+<div class="relative">
+<input type="text" placeholder="000" maxlength="3" class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm">
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2">
+<i class="ri-question-line text-gray-400"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-4">
+<div class="custom-checkbox">
+<input type="checkbox" id="saveCard">
+<label for="saveCard" class="text-gray-700">Kartımı güvenli bir şekilde kaydet</label>
+</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<h4 class="font-medium text-gray-800 mb-3">Taksit Seçenekleri</h4>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="custom-radio">
+<input type="radio" id="installment1" name="installment" checked>
+<label for="installment1" class="text-gray-700">Tek Çekim</label>
+</div>
+<span class="font-medium text-gray-800">5.886₺</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="custom-radio">
+<input type="radio" id="installment3" name="installment">
+<label for="installment3" class="text-gray-700">3 Taksit</label>
+</div>
+<span class="font-medium text-gray-800">1.962₺ x 3</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="custom-radio">
+<input type="radio" id="installment6" name="installment">
+<label for="installment6" class="text-gray-700">6 Taksit</label>
+</div>
+<span class="font-medium text-gray-800">981₺ x 6</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="border border-gray-200 rounded-lg overflow-hidden">
+<div class="flex items-center p-4">
+<div class="custom-radio">
+<input type="radio" id="bankTransfer" name="payment-method">
+<label for="bankTransfer" class="text-gray-800 font-medium">Havale / EFT</label>
+</div>
+</div>
+<div class="p-5 hidden" id="bankTransferDetails">
+<p class="text-gray-600 mb-4">Siparişinizi tamamladıktan sonra banka hesap bilgilerimiz e-posta adresinize gönderilecektir. Ödemenizi yaptıktan sonra siparişiniz hazırlanacaktır.</p>
+<div class="bg-gray-50 p-4 rounded-lg">
+<h4 class="font-medium text-gray-800 mb-3">Banka Seçiniz</h4>
+<div class="space-y-3">
+<div class="flex items-center">
+<div class="custom-radio">
+<input type="radio" id="bank1" name="bank" checked>
+<label for="bank1" class="text-gray-700">Garanti Bankası</label>
+</div>
+</div>
+<div class="flex items-center">
+<div class="custom-radio">
+<input type="radio" id="bank2" name="bank">
+<label for="bank2" class="text-gray-700">İş Bankası</label>
+</div>
+</div>
+<div class="flex items-center">
+<div class="custom-radio">
+<input type="radio" id="bank3" name="bank">
+<label for="bank3" class="text-gray-700">Ziraat Bankası</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="border border-gray-200 rounded-lg overflow-hidden">
+<div class="flex items-center p-4">
+<div class="custom-radio">
+<input type="radio" id="cashOnDelivery" name="payment-method">
+<label for="cashOnDelivery" class="text-gray-800 font-medium">Kapıda Ödeme</label>
+</div>
+</div>
+<div class="p-5 hidden" id="cashOnDeliveryDetails">
+<p class="text-gray-600 mb-4">Siparişiniz adresinize teslim edildiğinde ödeme yapabilirsiniz. Kapıda ödeme için 25₺ hizmet bedeli uygulanmaktadır.</p>
+<div class="bg-gray-50 p-4 rounded-lg">
+<h4 class="font-medium text-gray-800 mb-3">Ödeme Şekli</h4>
+<div class="space-y-3">
+<div class="flex items-center">
+<div class="custom-radio">
+<input type="radio" id="cashPayment" name="cashPaymentType" checked>
+<label for="cashPayment" class="text-gray-700">Nakit</label>
+</div>
+</div>
+<div class="flex items-center">
+<div class="custom-radio">
+<input type="radio" id="cardPayment" name="cashPaymentType">
+<label for="cardPayment" class="text-gray-700">Kredi Kartı / Banka Kartı</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Notes -->
+<div class="bg-white rounded-lg shadow-md p-6 mb-6">
+<h2 class="text-xl font-bold text-gray-800 mb-4">Sipariş Notu</h2>
+<textarea rows="3" placeholder="Siparişinizle ilgili eklemek istediğiniz notlar..." class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm"></textarea>
+</div>
+</div>
+<!-- Right Column - Order Summary -->
+<div class="w-full lg:w-1/3">
+<div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+<h2 class="text-xl font-bold text-gray-800 mb-6">Sipariş Özeti</h2>
+<!-- Order Items -->
+<div class="max-h-64 overflow-y-auto space-y-4 mb-6">
+<div class="flex items-center gap-3">
+<img src="https://readdy.ai/api/search-image?query=marine%25252520compass%2525252C%25252520ritchie%25252520navigation%25252520compass%2525252C%25252520boat%25252520dashboard%25252520instrument%2525252C%25252520detailed%25252520product%25252520photography%25252520on%25252520white%25252520background%2525252C%25252520high%25252520quality%25252520nautical%25252520equipment&width=200&height=200&seq=1004&orientation=squarish" alt="Ritchie Trek TR-31G Işıklı Pusula" class="w-16 h-16 object-contain object-top">
+<div class="flex-1">
+<h4 class="text-sm font-medium text-gray-800">Ritchie Trek TR-31G Işıklı Pusula</h4>
+<div class="flex items-center justify-between mt-1">
+<span class="text-xs text-gray-600">1 x 2.450₺</span>
+<span class="text-sm font-medium text-gray-800">2.450₺</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<img src="https://readdy.ai/api/search-image?query=marine%25252520barometer%2525252C%25252520brass%25252520nautical%25252520barometer%2525252C%25252520traditional%25252520ship%25252520instrument%2525252C%25252520detailed%25252520product%25252520photography%25252520on%25252520white%25252520background%2525252C%25252520high%25252520quality%25252520nautical%25252520equipment&width=200&height=200&seq=1002&orientation=squarish" alt="VDO Barometre Sarı" class="w-16 h-16 object-contain object-top">
+<div class="flex-1">
+<h4 class="text-sm font-medium text-gray-800">VDO Barometre Sarı</h4>
+<div class="flex items-center justify-between mt-1">
+<span class="text-xs text-gray-600">1 x 1.850₺</span>
+<span class="text-sm font-medium text-gray-800">1.850₺</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<img src="https://readdy.ai/api/search-image?query=marine%25252520boat%25252520fender%2525252C%25252520blue%25252520boat%25252520bumper%2525252C%25252520nautical%25252520equipment%2525252C%25252520detailed%25252520product%25252520photography%25252520on%25252520white%25252520background%2525252C%25252520high%25252520quality%25252520nautical%25252520equipment&width=200&height=200&seq=1015&orientation=squarish" alt="Usturmaça F2 Mavi" class="w-16 h-16 object-contain object-top">
+<div class="flex-1">
+<h4 class="text-sm font-medium text-gray-800">Usturmaça F2 Mavi</h4>
+<div class="flex items-center justify-between mt-1">
+<span class="text-xs text-gray-600">1 x 650₺</span>
+<span class="text-sm font-medium text-gray-800">650₺</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Coupon Code -->
+<div class="mb-6">
+<div class="flex mb-2">
+<input type="text" placeholder="İndirim kodu girin" class="flex-grow px-4 py-2 border border-gray-300 rounded-l-button text-sm">
+<button class="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 !rounded-r-button text-sm whitespace-nowrap">Uygula</button>
+</div>
+</div>
+<!-- Order Totals -->
+<div class="space-y-3 border-b border-gray-200 pb-6 mb-6">
+<div class="flex justify-between">
+<span class="text-gray-600">Ara Toplam</span>
+<span class="font-medium text-gray-800">4.950₺</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">Kargo Ücreti</span>
+<span class="font-medium text-gray-800">45₺</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">KDV (18%)</span>
+<span class="font-medium text-gray-800">891₺</span>
+</div>
+</div>
+<!-- Total -->
+<div class="flex justify-between items-center mb-6">
+<span class="text-lg font-bold text-gray-800">Toplam</span>
+<span class="text-xl font-bold text-primary">5.886₺</span>
+</div>
+<!-- Terms Checkbox -->
+<div class="mb-6">
+<div class="custom-checkbox">
+<input type="checkbox" id="termsAgree">
+<label for="termsAgree" class="text-gray-700 text-sm">
+<span class="text-gray-800">Mesafeli satış sözleşmesini</span> okudum ve kabul ediyorum.
+</label>
+</div>
+</div>
+<!-- Complete Order Button -->
+<button id="completeOrderBtn" class="w-full bg-primary hover:bg-primary/90 text-white py-3 px-6 !rounded-button font-medium transition-all duration-200 whitespace-nowrap flex items-center justify-center mb-4">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-check-line"></i>
+</div>
+Siparişi Tamamla
+</button>
+<!-- Back to Cart -->
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/548dde31-f72f-4eac-b297-7de0653678ad" data-readdy="true" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 px-6 !rounded-button font-medium transition-all duration-200 whitespace-nowrap flex items-center justify-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-arrow-left-line"></i>
+</div>
+Sepete Geri Dön
+</a>
+<!-- Security Info -->
+<div class="mt-6 pt-6 border-t border-gray-200">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 flex items-center justify-center bg-green-100 text-green-600 rounded-full mr-3">
+<i class="ri-shield-check-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-800">Güvenli Ödeme</h4>
+<p class="text-sm text-gray-600">256-bit SSL ile şifrelenmiş güvenli ödeme</p>
+</div>
+</div>
+<div class="flex space-x-3">
+<div class="w-8 h-8 flex items-center justify-center text-gray-600">
+<i class="ri-visa-fill ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-600">
+<i class="ri-mastercard-fill ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-600">
+<i class="ri-bank-fill ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-600">
+<i class="ri-secure-payment-line ri-lg"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-800 text-white pt-16 pb-8 mt-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div>
+<div class="flex items-center mb-6">
+<div class="text-white text-3xl font-['Pacifico']">Deniz</div>
+<div class="ml-1 text-gray-300 text-lg">Ticaret</div>
+</div>
+<p class="text-gray-400 mb-6">20 yılı aşkın tecrübemiz ile denizcilik sektöründe kaliteli ve güvenilir ürünlerin adresi.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-twitter-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-linkedin-fill"></i>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Hızlı Erişim</h4>
+<ul class="space-y-3">
+<li><a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/752f4e94-d540-4a96-aaa1-1a7c7c05446d" data-readdy="true" class="text-gray-400 hover:text-white transition-colors duration-200">Anasayfa</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Hakkımızda</a></li>
+<li><a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/d7842858-4a4f-4cf7-acec-bada1b684259" data-readdy="true" class="text-gray-400 hover:text-white transition-colors duration-200">Ürünlerimiz</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Referanslar</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">İletişim</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Ürün Kategorileri</h4>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Navigasyon Ekipmanları</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Güverte Donanımları</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Elektrik & Elektronik</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Güvenlik Ekipmanları</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Dekorasyon & Aksesuar</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Bültenimize Abone Olun</h4>
+<p class="text-gray-400 mb-4">Yeni ürünler ve kampanyalardan haberdar olmak için bültenimize abone olun.</p>
+<div class="flex">
+<input type="email" placeholder="E-posta adresiniz" class="flex-grow px-4 py-2 bg-gray-700 border border-gray-600 rounded-l-button text-white focus:outline-none focus:border-primary">
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-button whitespace-nowrap">Abone Ol</button>
+</div>
+<div class="mt-6">
+<h5 class="font-medium mb-3">Ödeme Yöntemleri</h5>
+<div class="flex space-x-3">
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-visa-fill ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-mastercard-fill ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-paypal-fill ri-lg"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-700 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 Deniz Ticaret. Tüm hakları saklıdır.</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-200">Gizlilik Politikası</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-200">Kullanım Koşulları</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-200">Çerez Politikası</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- Modal for Terms -->
+<div id="termsModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+<div class="bg-white rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-bold text-gray-800">Mesafeli Satış Sözleşmesi</h3>
+<button id="closeTermsModal" class="text-gray-400 hover:text-gray-600">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-close-line ri-lg"></i>
+</div>
+</button>
+</div>
+<div class="prose prose-sm max-w-none">
+<h4>1. TARAFLAR</h4>
+<p>İşbu Mesafeli Satış Sözleşmesi ("Sözleşme"); aşağıda bilgileri bulunan taraflar arasında aşağıda belirtilen hüküm ve şartlar çerçevesinde imzalanmıştır.</p>
+<p><strong>SATICI:</strong><br>
+Unvan: Deniz Ticaret A.Ş.<br>
+Adres: Sahil Cad. No:42 Kalamış, Kadıköy/İstanbul<br>
+Telefon: 0216 123 45 67<br>
+E-mail: info@denizticaret.com<br>
+</p>
+<p><strong>ALICI:</strong><br>
+Adı/Soyadı/Unvan: <br>
+Adres: <br>
+Telefon: <br>
+E-mail: <br>
+</p>
+<h4>2. SÖZLEŞME KONUSU ÜRÜN/ÜRÜNLER</h4>
+<p>İşbu sözleşmenin konusu, ALICI'nın SATICI'ya ait internet sitesinden elektronik ortamda siparişini verdiği aşağıda nitelikleri ve satış fiyatı belirtilen ürün/ürünlerin satışı ve teslimi ile ilgili olarak 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği hükümleri gereğince tarafların hak ve yükümlülüklerinin saptanmasıdır.</p>
+<h4>3. GENEL HÜKÜMLER</h4>
+<p>3.1. ALICI, SATICI'ya ait internet sitesinde sözleşme konusu ürünün temel nitelikleri, satış fiyatı ve ödeme şekli ile teslimata ilişkin ön bilgileri okuyup, bilgi sahibi olduğunu, elektronik ortamda gerekli teyidi verdiğini kabul, beyan ve taahhüt eder.</p>
+<p>3.2. Sözleşme konusu ürün, yasal 30 günlük süreyi aşmamak koşulu ile her bir ürün için ALICI'nın yerleşim yerinin uzaklığına bağlı olarak internet sitesinde ön bilgiler içinde açıklanan süre içinde ALICI veya ALICI'nın gösterdiği adresteki kişi ve/veya kuruluşa teslim edilir.</p>
+<p>3.3. SATICI, sözleşme konusu ürünü eksiksiz, siparişte belirtilen niteliklere uygun ve varsa garanti belgeleri, kullanım kılavuzları ile teslim etmeyi, her türlü ayıptan arî olarak yasal mevzuat gereklerine göre sağlam, standartlara uygun bir şekilde işi doğruluk ve dürüstlük esasları çerçevesinde ifa etmeyi, hizmet kalitesini koruyup yükseltmeyi, işin ifası sırasında gerekli dikkat ve özeni göstermeyi, ihtiyat ve öngörü ile hareket etmeyi kabul, beyan ve taahhüt eder.</p>
+<p>3.4. SATICI, sözleşmeden doğan ifa yükümlülüğünün süresi dolmadan ALICI'yı bilgilendirmek ve açıkça onayını almak suretiyle eşit kalite ve fiyatta farklı bir ürün tedarik edebilir.</p>
+<p>3.5. SATICI, sipariş konusu ürün veya hizmetin yerine getirilmesinin imkânsızlaşması halinde sözleşme konusu yükümlülüklerini yerine getiremezse, bu durumu, öğrendiği tarihten itibaren 3 gün içinde yazılı olarak tüketiciye bildireceğini, 14 günlük süre içinde toplam bedeli ALICI'ya iade edeceğini kabul, beyan ve taahhüt eder.</p>
+<h4>4. CAYMA HAKKI</h4>
+<p>4.1. ALICI; mal satışına ilişkin mesafeli sözleşmelerde, ürünün kendisine veya gösterdiği adresteki kişi/kuruluşa teslim tarihinden itibaren 14 (on dört) gün içerisinde, SATICI'ya bildirmek şartıyla hiçbir hukuki ve cezai sorumluluk üstlenmeksizin ve hiçbir gerekçe göstermeksizin malı reddederek sözleşmeden cayma hakkını kullanabilir. Hizmet sunumuna ilişkin mesafeli sözleşmelerde ise, bu süre sözleşmenin imzalandığı tarihten itibaren başlar. Cayma hakkı süresi sona ermeden önce, tüketicinin onayı ile hizmetin ifasına başlanan hizmet sözleşmelerinde cayma hakkı kullanılamaz.</p>
+<p>4.2. Cayma hakkının kullanımından kaynaklanan masraflar SATICI' ya aittir. ALICI, iş bu sözleşmeyi kabul etmekle, cayma hakkı konusunda bilgilendirildiğini peşinen kabul eder.</p>
+<p>4.3. Cayma hakkının kullanılması için 14 (on dört) günlük süre içinde SATICI' ya iadeli taahhütlü posta, faks veya eposta ile yazılı bildirimde bulunulması ve ürünün işbu sözleşmede düzenlenen "Cayma Hakkı Kullanılamayacak Ürünler" hükümleri çerçevesinde kullanılmamış olması şarttır.</p>
+<h4>5. CAYMA HAKKI KULLANILAMAYACAK ÜRÜNLER</h4>
+<p>ALICI'nın isteği veya açıkça kişisel ihtiyaçları doğrultusunda hazırlanan ve geri gönderilmeye müsait olmayan, iç giyim alt parçaları, mayo ve bikini altları, makyaj malzemeleri, tek kullanımlık ürünler, çabuk bozulma tehlikesi olan veya son kullanma tarihi geçme ihtimali olan mallar, ALICI'ya teslim edilmesinin ardından ALICI tarafından ambalajı açıldığı takdirde iade edilmesi sağlık ve hijyen açısından uygun olmayan ürünler, teslim edildikten sonra başka ürünlerle karışan ve doğası gereği ayrıştırılması mümkün olmayan ürünler, Abonelik sözleşmesi kapsamında sağlananlar dışında, gazete ve dergi gibi süreli yayınlara ilişkin mallar, Elektronik ortamda anında ifa edilen hizmetler veya tüketiciye anında teslim edilen gayrimaddi mallar, ile ses veya görüntü kayıtlarının, kitap, dijital içerik, yazılım programlarının, veri kaydedebilme ve veri depolama cihazlarının, bilgisayar sarf malzemelerinin, ambalajının ALICI tarafından açılmış olması halinde iadesi Yönetmelik gereği mümkün değildir. Ayrıca Cayma hakkı süresi sona ermeden önce, tüketicinin onayı ile ifasına başlanan hizmetlere ilişkin cayma hakkının kullanılması da Yönetmelik gereği mümkün değildir.</p>
+<h4>6. GENEL HÜKÜMLER</h4>
+<p>6.1. ALICI, SATICI'ya ait internet sitesinde sözleşme konusu ürünün temel nitelikleri, satış fiyatı ve ödeme şekli ile teslimata ilişkin ön bilgileri okuyup, bilgi sahibi olduğunu, elektronik ortamda gerekli teyidi verdiğini kabul, beyan ve taahhüt eder. ALICI'nın; Ön Bilgilendirmeyi elektronik ortamda teyit etmesi, mesafeli satış sözleşmesinin kurulmasından evvel, SATICI tarafından ALICI' ya verilmesi gereken adresi, siparişi verilen ürünlere ait temel özellikleri, ürünlerin vergiler dâhil fiyatını, ödeme ve teslimat bilgilerini de doğru ve eksiksiz olarak edindiğini kabul, beyan ve taahhüt eder.</p>
+<p>6.2. Sözleşme konusu her bir ürün, 30 günlük yasal süreyi aşmamak kaydı ile ALICI' nın yerleşim yeri uzaklığına bağlı olarak internet sitesindeki ön bilgiler kısmında belirtilen süre zarfında ALICI veya ALICI'nın gösterdiği adresteki kişi ve/veya kuruluşa teslim edilir. Bu süre içinde ürünün ALICI'ya teslim edilememesi durumunda, ALICI'nın sözleşmeyi feshetme hakkı saklıdır.</p>
+<p>6.3. SATICI, Sözleşme konusu ürünü eksiksiz, siparişte belirtilen niteliklere uygun ve varsa garanti belgeleri, kullanım kılavuzları işin gereği olan bilgi ve belgeler ile teslim etmeyi, her türlü ayıptan arî olarak yasal mevzuat gereklerine göre sağlam, standartlara uygun bir şekilde işi doğruluk ve dürüstlük esasları çerçevesinde ifa etmeyi, hizmet kalitesini koruyup yükseltmeyi, işin ifası sırasında gerekli dikkat ve özeni göstermeyi, ihtiyat ve öngörü ile hareket etmeyi kabul, beyan ve taahhüt eder.</p>
+<p>6.4. SATICI, sözleşmeden doğan ifa yükümlülüğünün süresi dolmadan ALICI'yı bilgilendirmek ve açıkça onayını almak suretiyle eşit kalite ve fiyatta farklı bir ürün tedarik edebilir.</p>
+<p>6.5. SATICI, sipariş konusu ürün veya hizmetin yerine getirilmesinin imkânsızlaşması halinde sözleşme konusu yükümlülüklerini yerine getiremezse, bu durumu, öğrendiği tarihten itibaren 3 gün içinde yazılı olarak tüketiciye bildireceğini, 14 günlük süre içinde toplam bedeli ALICI'ya iade edeceğini kabul, beyan ve taahhüt eder.</p>
+<p>6.6. ALICI, Sözleşme konusu ürünün teslimatı için işbu Sözleşme'yi elektronik ortamda teyit edeceğini, herhangi bir nedenle sözleşme konusu ürün bedelinin ödenmemesi ve/veya banka kayıtlarında iptal edilmesi halinde, SATICI'nın sözleşme konusu ürünü teslim yükümlülüğünün sona ereceğini kabul, beyan ve taahhüt eder.</p>
+<p>6.7. ALICI, Sözleşme konusu ürünün ALICI veya ALICI'nın gösterdiği adresteki kişi ve/veya kuruluşa tesliminden sonra ALICI'ya ait kredi kartının yetkisiz kişilerce haksız kullanılması sonucunda sözleşme konusu ürün bedelinin ilgili banka veya finans kuruluşu tarafından SATICI'ya ödenmemesi halinde, ALICI Sözleşme konusu ürünü 3 gün içerisinde nakliye gideri SATICI'ya ait olacak şekilde SATICI'ya iade edeceğini kabul, beyan ve taahhüt eder.</p>
+<p>6.8. SATICI, tarafların iradesi dışında gelişen, önceden öngörülemeyen ve tarafların borçlarını yerine getirmesini engelleyici ve/veya geciktirici hallerin oluşması gibi mücbir sebepler halleri nedeni ile sözleşme konusu ürünü süresi içinde teslim edemez ise, durumu ALICI'ya bildireceğini kabul, beyan ve taahhüt eder. ALICI da siparişin iptal edilmesini, sözleşme konusu ürünün varsa emsali ile değiştirilmesini ve/veya teslimat süresinin engelleyici durumun ortadan kalkmasına kadar ertelenmesini SATICI'dan talep etme hakkını haizdir. ALICI tarafından siparişin iptal edilmesi halinde ALICI'nın nakit ile yaptığı ödemelerde, ürün tutarı 14 gün içinde kendisine nakden ve defaten ödenir. ALICI'nın kredi kartı ile yaptığı ödemelerde ise, ürün tutarı, siparişin ALICI tarafından iptal edilmesinden sonra 14 gün içerisinde ilgili bankaya iade edilir. ALICI, SATICI tarafından kredi kartına iade edilen tutarın banka tarafından ALICI hesabına yansıtılmasına ilişkin ortalama sürecin 2 ile 3 haftayı bulabileceğini, bu tutarın bankaya iadesinden sonra ALICI'nın hesaplarına yansıması halinin tamamen banka işlem süreci ile ilgili olduğundan, ALICI, olası gecikmeler için SATICI'yı sorumlu tutamayacağını kabul, beyan ve taahhüt eder.</p>
+<h4>7. DİĞER HÜKÜMLER</h4>
+<p>7.1. ALICI, işbu sözleşme ile ilgili tüm şikâyet ve itirazları için yerleşim yerinin bulunduğu veya tüketici işleminin yapıldığı yerdeki Tüketici Hakem Heyetine veya Tüketici Mahkemesine başvurabilir.</p>
+<p>7.2. İşbu Sözleşme, ALICI tarafından elektronik ortamda onaylanmak suretiyle akdedilmiş ve karşılıklı olarak yürürlüğe girmiştir.</p>
+<p><strong>SATICI: Deniz Ticaret A.Ş.</strong></p>
+<p><strong>ALICI: </strong></p>
+<p><strong>TARİH: 21.06.2025</strong></p>
+</div>
+</div>
+</div>
+<!-- Success Modal -->
+<div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+<div class="bg-white rounded-lg p-6 max-w-md w-full mx-4 text-center">
+<div class="w-20 h-20 mx-auto flex items-center justify-center bg-green-100 text-green-500 rounded-full mb-6">
+<i class="ri-check-line ri-3x"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-3">Siparişiniz Alındı!</h3>
+<p class="text-gray-600 mb-6">Siparişiniz başarıyla oluşturuldu. Sipariş detayları e-posta adresinize gönderildi.</p>
+<p class="text-gray-700 font-medium mb-6">Sipariş Numaranız: <span class="text-primary">DT-2025-06-21-0042</span></p>
+<div class="flex flex-col space-y-3">
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/09a9e05c-d5e1-4063-bfa7-8448960ec8ca" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium transition-all duration-200 whitespace-nowrap">
+Siparişlerim
+</a>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/752f4e94-d540-4a96-aaa1-1a7c7c05446d" data-readdy="true" class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-6 !rounded-button font-medium transition-all duration-200 whitespace-nowrap">
+Alışverişe Devam Et
+</a>
+</div>
+</div>
+</div>
+<script id="addressToggle">
+document.addEventListener('DOMContentLoaded', function() {
+const newAddressBtn = document.getElementById('newAddressBtn');
+const newAddressForm = document.getElementById('newAddressForm');
+const cancelAddressBtn = document.getElementById('cancelAddressBtn');
+newAddressBtn.addEventListener('click', function() {
+newAddressForm.classList.remove('hidden');
+});
+cancelAddressBtn.addEventListener('click', function() {
+newAddressForm.classList.add('hidden');
+});
+});
+</script>
+<script id="billingToggle">
+document.addEventListener('DOMContentLoaded', function() {
+const sameAsDeliveryCheckbox = document.getElementById('sameAsDelivery');
+const billingForm = document.getElementById('billingForm');
+const individualRadio = document.getElementById('individual');
+const corporateRadio = document.getElementById('corporate');
+const individualForm = document.getElementById('individualForm');
+const corporateForm = document.getElementById('corporateForm');
+sameAsDeliveryCheckbox.addEventListener('change', function() {
+if(this.checked) {
+billingForm.classList.add('hidden');
+} else {
+billingForm.classList.remove('hidden');
+}
+});
+individualRadio.addEventListener('change', function() {
+if(this.checked) {
+individualForm.classList.remove('hidden');
+corporateForm.classList.add('hidden');
+}
+});
+corporateRadio.addEventListener('change', function() {
+if(this.checked) {
+corporateForm.classList.remove('hidden');
+individualForm.classList.add('hidden');
+}
+});
+});
+</script>
+<script id="paymentMethodToggle">
+document.addEventListener('DOMContentLoaded', function() {
+const creditCardRadio = document.getElementById('creditCard');
+const bankTransferRadio = document.getElementById('bankTransfer');
+const cashOnDeliveryRadio = document.getElementById('cashOnDelivery');
+const bankTransferDetails = document.getElementById('bankTransferDetails');
+const cashOnDeliveryDetails = document.getElementById('cashOnDeliveryDetails');
+creditCardRadio.addEventListener('change', function() {
+if(this.checked) {
+bankTransferDetails.classList.add('hidden');
+cashOnDeliveryDetails.classList.add('hidden');
+}
+});
+bankTransferRadio.addEventListener('change', function() {
+if(this.checked) {
+bankTransferDetails.classList.remove('hidden');
+cashOnDeliveryDetails.classList.add('hidden');
+}
+});
+cashOnDeliveryRadio.addEventListener('change', function() {
+if(this.checked) {
+cashOnDeliveryDetails.classList.remove('hidden');
+bankTransferDetails.classList.add('hidden');
+}
+});
+});
+</script>
+<script id="termsAndCheckout">
+document.addEventListener('DOMContentLoaded', function() {
+const termsAgreeCheckbox = document.getElementById('termsAgree');
+const termsModal = document.getElementById('termsModal');
+const closeTermsModal = document.getElementById('closeTermsModal');
+const completeOrderBtn = document.getElementById('completeOrderBtn');
+const successModal = document.getElementById('successModal');
+// Open terms modal when clicking on the terms text
+document.querySelector('label[for="termsAgree"] span').addEventListener('click', function(e) {
+e.preventDefault();
+termsModal.classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+});
+// Close terms modal
+closeTermsModal.addEventListener('click', function() {
+termsModal.classList.add('hidden');
+document.body.style.overflow = '';
+});
+// Close terms modal when clicking outside
+termsModal.addEventListener('click', function(e) {
+if (e.target === termsModal) {
+termsModal.classList.add('hidden');
+document.body.style.overflow = '';
+}
+});
+// Complete order button
+completeOrderBtn.addEventListener('click', function() {
+if (!termsAgreeCheckbox.checked) {
+// Show error toast
+const toast = document.createElement('div');
+toast.className = 'fixed top-4 right-4 bg-white shadow-lg rounded-lg p-4 z-50 flex items-center min-w-[320px] transform transition-all duration-300 translate-x-full';
+toast.innerHTML = `
+<div class="w-10 h-10 flex items-center justify-center bg-red-100 text-red-500 rounded-full mr-3">
+<i class="ri-error-warning-line ri-lg"></i>
+</div>
+<div class="flex-1">
+<p class="font-medium text-gray-800">Hata</p>
+<p class="text-gray-600 text-sm">Lütfen mesafeli satış sözleşmesini kabul edin.</p>
+</div>
+<button class="text-gray-400 hover:text-gray-600 ml-2">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-close-line"></i>
+</div>
+</button>
+`;
+document.body.appendChild(toast);
+requestAnimationFrame(() => {
+toast.classList.remove('translate-x-full');
+});
+toast.querySelector('button').addEventListener('click', function() {
+toast.classList.add('translate-x-full');
+setTimeout(() => toast.remove(), 300);
+});
+setTimeout(() => {
+toast.classList.add('translate-x-full');
+setTimeout(() => toast.remove(), 300);
+}, 5000);
+return;
+}
+// Show success modal
+successModal.classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+});
+// Close success modal when clicking outside
+successModal.addEventListener('click', function(e) {
+if (e.target === successModal) {
+successModal.classList.add('hidden');
+document.body.style.overflow = '';
+}
+});
+});
+</script>
+</body>
+</html>

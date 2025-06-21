@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siparişlerim - Deniz Ticaret</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+tailwind.config={
+theme:{
+extend:{
+colors:{
+primary:'#0099cc',
+secondary:'#005580'
+},
+borderRadius:{
+'none':'0px',
+'sm':'4px',
+DEFAULT:'8px',
+'md':'12px',
+'lg':'16px',
+'xl':'20px',
+'2xl':'24px',
+'3xl':'32px',
+'full':'9999px',
+'button':'8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+input:focus, textarea:focus, select:focus {
+outline: none;
+}
+.custom-number-input::-webkit-inner-spin-button,
+.custom-number-input::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.custom-number-input {
+-moz-appearance: textfield;
+}
+.custom-radio input[type="radio"] {
+display: none;
+}
+.custom-radio input[type="radio"] + label {
+position: relative;
+padding-left: 28px;
+cursor: pointer;
+display: inline-block;
+}
+.custom-radio input[type="radio"] + label:before {
+content: '';
+position: absolute;
+left: 0;
+top: 0;
+width: 20px;
+height: 20px;
+border: 2px solid #d1d5db;
+border-radius: 50%;
+background: #fff;
+}
+.custom-radio input[type="radio"]:checked + label:before {
+border-color: #0099cc;
+}
+.custom-radio input[type="radio"]:checked + label:after {
+content: '';
+position: absolute;
+left: 5px;
+top: 5px;
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background: #0099cc;
+}
+.custom-checkbox input[type="checkbox"] {
+display: none;
+}
+.custom-checkbox input[type="checkbox"] + label {
+position: relative;
+padding-left: 28px;
+cursor: pointer;
+display: inline-block;
+}
+.custom-checkbox input[type="checkbox"] + label:before {
+content: '';
+position: absolute;
+left: 0;
+top: 0;
+width: 20px;
+height: 20px;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+background: #fff;
+}
+.custom-checkbox input[type="checkbox"]:checked + label:before {
+border-color: #0099cc;
+background: #0099cc;
+}
+.custom-checkbox input[type="checkbox"]:checked + label:after {
+content: '\ea12';
+font-family: 'remixicon';
+position: absolute;
+left: 3px;
+top: 0px;
+font-size: 14px;
+color: white;
+}
+.order-status-badge {
+padding: 4px 12px;
+border-radius: 9999px;
+font-size: 12px;
+font-weight: 500;
+display: inline-flex;
+align-items: center;
+}
+.order-status-badge i {
+margin-right: 4px;
+}
+.order-status-badge.preparing {
+background-color: rgba(59, 130, 246, 0.1);
+color: #2563eb;
+}
+.order-status-badge.shipped {
+background-color: rgba(245, 158, 11, 0.1);
+color: #d97706;
+}
+.order-status-badge.delivered {
+background-color: rgba(16, 185, 129, 0.1);
+color: #059669;
+}
+.order-status-badge.cancelled {
+background-color: rgba(239, 68, 68, 0.1);
+color: #dc2626;
+}
+.tab-button {
+position: relative;
+}
+.tab-button.active::after {
+content: '';
+position: absolute;
+bottom: -10px;
+left: 0;
+width: 100%;
+height: 2px;
+background-color: #0099cc;
+}
+.date-range-picker {
+position: relative;
+}
+.date-range-picker input {
+padding-right: 36px;
+}
+.date-range-picker i {
+position: absolute;
+right: 12px;
+top: 50%;
+transform: translateY(-50%);
+color: #6b7280;
+pointer-events: none;
+}
+.pagination-button {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 36px;
+height: 36px;
+border-radius: 8px;
+font-weight: 500;
+transition: all 0.2s;
+}
+.pagination-button.active {
+background-color: #0099cc;
+color: white;
+}
+.pagination-button:not(.active):hover {
+background-color: #f3f4f6;
+}
+</style>
+</head>
+<body class="bg-gray-50 font-sans">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white shadow-md">
+<div class="container mx-auto px-4">
+<div class="flex items-center justify-between py-4">
+<!-- Logo -->
+<div class="flex items-center">
+<a href="#" class="flex items-center">
+<div class="text-primary text-3xl font-['Pacifico']">Deniz</div>
+<div class="ml-1 text-gray-700 text-lg">Ticaret</div>
+</a>
+</div>
+<!-- Navigation -->
+<nav class="hidden md:flex space-x-8">
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/752f4e94-d540-4a96-aaa1-1a7c7c05446d" data-readdy="true" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">ANASAYFA</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">KURUMSAL</a>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/d7842858-4a4f-4cf7-acec-bada1b684259" data-readdy="true" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">ÜRÜNLER</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">DEKOR VE HEDİYELİK</a>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/c3d14af2-1efa-4224-bc44-1b5ff0d8940c" data-readdy="true" class="text-primary font-medium transition-colors duration-200">SİPARİŞLERİM</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">İLETİŞİM</a>
+</nav>
+<!-- Search and Language -->
+<div class="flex items-center space-x-4">
+<div class="hidden md:flex items-center bg-gray-100 rounded-button overflow-hidden">
+<input type="text" placeholder="Ürün arayın..." class="bg-transparent border-none px-4 py-2 text-sm w-48">
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap">
+<i class="ri-search-line"></i>
+</button>
+</div>
+<div class="flex items-center space-x-2">
+<a href="#" class="text-gray-700 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-global-line ri-lg"></i>
+</div>
+</a>
+<div class="relative">
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/548dde31-f72f-4eac-b297-7de0653678ad" data-readdy="true" class="text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-shopping-cart-line ri-lg"></i>
+<div class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">3</div>
+</div>
+</a>
+</div>
+<div class="relative">
+<a href="#" class="text-gray-700 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-user-line ri-lg"></i>
+</div>
+</a>
+</div>
+</div>
+<button class="md:hidden w-10 h-10 flex items-center justify-center">
+<i class="ri-menu-line ri-xl"></i>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Breadcrumb -->
+<div class="bg-gray-100 py-3">
+<div class="container mx-auto px-4">
+<div class="flex items-center text-sm text-gray-600">
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/752f4e94-d540-4a96-aaa1-1a7c7c05446d" data-readdy="true" class="hover:text-primary transition-colors">Anasayfa</a>
+<span class="mx-2">/</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/c3d14af2-1efa-4224-bc44-1b5ff0d8940c" data-readdy="true" class="text-gray-800 font-medium">Siparişlerim</a>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<section class="py-8">
+<div class="container mx-auto px-4">
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Left Sidebar - Account Menu -->
+<div class="w-full lg:w-1/4">
+<div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+<i class="ri-user-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="font-medium text-gray-800">Ahmet Yılmaz</h3>
+<p class="text-sm text-gray-500">ahmet.yilmaz@email.com</p>
+</div>
+</div>
+<div class="space-y-1">
+<a href="#" class="flex items-center px-4 py-3 rounded-lg bg-primary/10 text-primary font-medium">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-shopping-bag-line"></i>
+</div>
+<span>Siparişlerim</span>
+</a>
+<a href="#" class="flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-heart-line"></i>
+</div>
+<span>Favorilerim</span>
+</a>
+<a href="#" class="flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>Adreslerim</span>
+</a>
+<a href="#" class="flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-bank-card-line"></i>
+</div>
+<span>Ödeme Yöntemlerim</span>
+</a>
+<a href="#" class="flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-user-settings-line"></i>
+</div>
+<span>Hesap Bilgilerim</span>
+</a>
+<a href="#" class="flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-notification-line"></i>
+</div>
+<span>Bildirim Ayarları</span>
+</a>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/c3d14af2-1efa-4224-bc44-1b5ff0d8940c" data-readdy="true" class="flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+<div class="w-5 h-5 flex items-center justify-center mr-3">
+<i class="ri-logout-box-line"></i>
+</div>
+<span>Çıkış Yap</span>
+</a>
+</div>
+<div class="mt-8 pt-6 border-t border-gray-200">
+<h4 class="font-medium text-gray-800 mb-4">Yardım & Destek</h4>
+<div class="space-y-3">
+<a href="#" class="flex items-center text-gray-700 hover:text-primary text-sm">
+<div class="w-4 h-4 flex items-center justify-center mr-2">
+<i class="ri-question-line"></i>
+</div>
+<span>Sıkça Sorulan Sorular</span>
+</a>
+<a href="#" class="flex items-center text-gray-700 hover:text-primary text-sm">
+<div class="w-4 h-4 flex items-center justify-center mr-2">
+<i class="ri-book-2-line"></i>
+</div>
+<span>Kullanım Koşulları</span>
+</a>
+<a href="#" class="flex items-center text-gray-700 hover:text-primary text-sm">
+<div class="w-4 h-4 flex items-center justify-center mr-2">
+<i class="ri-customer-service-2-line"></i>
+</div>
+<span>Müşteri Hizmetleri</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Content - Orders List -->
+<div class="w-full lg:w-3/4">
+<div class="bg-white rounded-lg shadow-md p-6 mb-6">
+<h1 class="text-2xl font-bold text-gray-800 mb-6">Siparişlerim</h1>
+<!-- Tabs -->
+<div class="flex border-b border-gray-200 mb-6">
+<button class="tab-button active mr-8 pb-3 text-primary font-medium">Tüm Siparişler</button>
+<button class="tab-button mr-8 pb-3 text-gray-500 hover:text-gray-700 font-medium">Hazırlanıyor</button>
+<button class="tab-button mr-8 pb-3 text-gray-500 hover:text-gray-700 font-medium">Kargoda</button>
+<button class="tab-button mr-8 pb-3 text-gray-500 hover:text-gray-700 font-medium">Teslim Edildi</button>
+<button class="tab-button pb-3 text-gray-500 hover:text-gray-700 font-medium">İptal Edildi</button>
+</div>
+<!-- Filters -->
+<div class="flex flex-col md:flex-row gap-4 mb-6">
+<div class="flex-1">
+<div class="relative">
+<input type="text" placeholder="Sipariş numarası veya ürün adı ara..." class="w-full px-4 py-2 pr-10 border border-gray-300 rounded-button text-gray-700 text-sm">
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+</div>
+<div class="w-full md:w-48">
+<div class="date-range-picker">
+<input type="text" placeholder="Tarih Aralığı" class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm">
+<i class="ri-calendar-line"></i>
+</div>
+</div>
+<div class="w-full md:w-48">
+<div class="relative">
+<select class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm appearance-none pr-10">
+<option value="">Ödeme Yöntemi</option>
+<option value="credit_card">Kredi Kartı</option>
+<option value="bank_transfer">Havale/EFT</option>
+<option value="cash_on_delivery">Kapıda Ödeme</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none text-gray-400">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-2 !rounded-button text-sm whitespace-nowrap">
+Filtrele
+</button>
+</div>
+<!-- Orders List -->
+<div class="space-y-6">
+<!-- Order 1 -->
+<div class="border border-gray-200 rounded-lg overflow-hidden">
+<div class="bg-gray-50 p-4 border-b border-gray-200">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<h3 class="font-medium text-gray-800">Sipariş #DT-2025-06-21-0042</h3>
+<span class="order-status-badge preparing">
+<i class="ri-time-line"></i>
+Hazırlanıyor
+</span>
+</div>
+<div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+21 Haziran 2025
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-bank-card-line"></i>
+</div>
+Kredi Kartı
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-price-tag-3-line"></i>
+</div>
+5.886₺
+</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-gray-700 hover:text-primary border border-gray-300 hover:border-primary bg-white hover:bg-primary/5 px-4 py-2 !rounded-button text-sm whitespace-nowrap transition-colors">
+<div class="w-4 h-4 flex items-center justify-center mr-1 inline-block">
+<i class="ri-eye-line"></i>
+</div>
+Detaylar
+</button>
+<button class="text-gray-700 hover:text-primary border border-gray-300 hover:border-primary bg-white hover:bg-primary/5 px-4 py-2 !rounded-button text-sm whitespace-nowrap transition-colors">
+<div class="w-4 h-4 flex items-center justify-center mr-1 inline-block">
+<i class="ri-truck-line"></i>
+</div>
+Kargo Takip
+</button>
+<button class="text-red-600 hover:text-red-700 border border-gray-300 hover:border-red-200 bg-white hover:bg-red-50 px-4 py-2 !rounded-button text-sm whitespace-nowrap transition-colors">
+<div class="w-4 h-4 flex items-center justify-center mr-1 inline-block">
+<i class="ri-close-line"></i>
+</div>
+İptal Et
+</button>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-1 flex flex-col md:flex-row gap-4">
+<div class="flex items-center gap-3">
+<img src="https://readdy.ai/api/search-image?query=marine%2525252520compass%252525252C%2525252520ritchie%2525252520navigation%2525252520compass%252525252C%2525252520boat%2525252520dashboard%2525252520instrument%252525252C%2525252520detailed%2525252520product%2525252520photography%2525252520on%2525252520white%2525252520background%252525252C%2525252520high%2525252520quality%2525252520nautical%2525252520equipment&width=200&height=200&seq=1004&orientation=squarish" alt="Ritchie Trek TR-31G Işıklı Pusula" class="w-16 h-16 object-contain object-top">
+<div>
+<h4 class="text-sm font-medium text-gray-800">Ritchie Trek TR-31G Işıklı Pusula</h4>
+<p class="text-xs text-gray-600">1 x 2.450₺</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<img src="https://readdy.ai/api/search-image?query=marine%2525252520barometer%252525252C%2525252520brass%2525252520nautical%2525252520barometer%252525252C%2525252520traditional%2525252520ship%2525252520instrument%252525252C%2525252520detailed%2525252520product%2525252520photography%2525252520on%2525252520white%2525252520background%252525252C%2525252520high%2525252520quality%2525252520nautical%2525252520equipment&width=200&height=200&seq=1002&orientation=squarish" alt="VDO Barometre Sarı" class="w-16 h-16 object-contain object-top">
+<div>
+<h4 class="text-sm font-medium text-gray-800">VDO Barometre Sarı</h4>
+<p class="text-xs text-gray-600">1 x 1.850₺</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<img src="https://readdy.ai/api/search-image?query=marine%2525252520boat%2525252520fender%252525252C%2525252520blue%2525252520boat%2525252520bumper%252525252C%2525252520nautical%2525252520equipment%252525252C%2525252520detailed%2525252520product%2525252520photography%2525252520on%2525252520white%2525252520background%252525252C%2525252520high%2525252520quality%2525252520nautical%2525252520equipment&width=200&height=200&seq=1015&orientation=squarish" alt="Usturmaça F2 Mavi" class="w-16 h-16 object-contain object-top">
+<div>
+<h4 class="text-sm font-medium text-gray-800">Usturmaça F2 Mavi</h4>
+<p class="text-xs text-gray-600">1 x 650₺</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Order 2 -->
+<div class="border border-gray-200 rounded-lg overflow-hidden">
+<div class="bg-gray-50 p-4 border-b border-gray-200">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<h3 class="font-medium text-gray-800">Sipariş #DT-2025-06-15-0038</h3>
+<span class="order-status-badge shipped">
+<i class="ri-truck-line"></i>
+Kargoda
+</span>
+</div>
+<div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+15 Haziran 2025
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-bank-card-line"></i>
+</div>
+Havale/EFT
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-price-tag-3-line"></i>
+</div>
+3.250₺
+</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-gray-700 hover:text-primary border border-gray-300 hover:border-primary bg-white hover:bg-primary/5 px-4 py-2 !rounded-button text-sm whitespace-nowrap transition-colors">
+<div class="w-4 h-4 flex items-center justify-center mr-1 inline-block">
+<i class="ri-eye-line"></i>
+</div>
+Detaylar
+</button>
+<button class="text-primary border border-primary bg-primary/5 px-4 py-2 !rounded-button text-sm whitespace-nowrap transition-colors">
+<div class="w-4 h-4 flex items-center justify-center mr-1 inline-block">
+<i class="ri-truck-line"></i>
+</div>
+Kargo Takip
+</button>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-1 flex flex-col md:flex-row gap-4">
+<div class="flex items-center gap-3">
+<img src="https://readdy.ai/api/search-image?query=marine%2525252520binoculars%252525252C%2525252520waterproof%2525252520nautical%2525252520binoculars%252525252C%2525252520boat%2525252520equipment%252525252C%2525252520detailed%2525252520product%2525252520photography%2525252520on%2525252520white%2525252520background%252525252C%2525252520high%2525252520quality%2525252520nautical%2525252520equipment&width=200&height=200&seq=1006&orientation=squarish" alt="Steiner Navigator Pro 7x50 Dürbün" class="w-16 h-16 object-contain object-top">
+<div>
+<h4 class="text-sm font-medium text-gray-800">Steiner Navigator Pro 7x50 Dürbün</h4>
+<p class="text-xs text-gray-600">1 x 3.250₺</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Order 3 -->
+<div class="border border-gray-200 rounded-lg overflow-hidden">
+<div class="bg-gray-50 p-4 border-b border-gray-200">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<h3 class="font-medium text-gray-800">Sipariş #DT-2025-06-02-0027</h3>
+<span class="order-status-badge delivered">
+<i class="ri-check-double-line"></i>
+Teslim Edildi
+</span>
+</div>
+<div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+2 Haziran 2025
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-bank-card-line"></i>
+</div>
+Kredi Kartı
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-price-tag-3-line"></i>
+</div>
+7.890₺
+</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-gray-700 hover:text-primary border border-gray-300 hover:border-primary bg-white hover:bg-primary/5 px-4 py-2 !rounded-button text-sm whitespace-nowrap transition-colors">
+<div class="w-4 h-4 flex items-center justify-center mr-1 inline-block">
+<i class="ri-eye-line"></i>
+</div>
+Detaylar
+</button>
+<button class="text-gray-700 hover:text-primary border border-gray-300 hover:border-primary bg-white hover:bg-primary/5 px-4 py-2 !rounded-button text-sm whitespace-nowrap transition-colors">
+<div class="w-4 h-4 flex items-center justify-center mr-1 inline-block">
+<i class="ri-refresh-line"></i>
+</div>
+Tekrar Sipariş Ver
+</button>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-1 flex flex-col md:flex-row gap-4">
+<div class="flex items-center gap-3">
+<img src="https://readdy.ai/api/search-image?query=marine%2525252520life%2525252520jacket%252525252C%2525252520orange%2525252520flotation%2525252520device%252525252C%2525252520boat%2525252520safety%2525252520equipment%252525252C%2525252520detailed%2525252520product%2525252520photography%2525252520on%2525252520white%2525252520background%252525252C%2525252520high%2525252520quality%2525252520nautical%2525252520equipment&width=200&height=200&seq=1008&orientation=squarish" alt="Lalizas Can Yeleği 150N" class="w-16 h-16 object-contain object-top">
+<div>
+<h4 class="text-sm font-medium text-gray-800">Lalizas Can Yeleği 150N</h4>
+<p class="text-xs text-gray-600">2 x 1.250₺</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<img src="https://readdy.ai/api/search-image?query=marine%2525252520anchor%252525252C%2525252520stainless%2525252520steel%2525252520boat%2525252520anchor%252525252C%2525252520nautical%2525252520equipment%252525252C%2525252520detailed%2525252520product%2525252520photography%2525252520on%2525252520white%2525252520background%252525252C%2525252520high%2525252520quality%2525252520nautical%2525252520equipment&width=200&height=200&seq=1010&orientation=squarish" alt="Çapa Bruce 15 kg" class="w-16 h-16 object-contain object-top">
+<div>
+<h4 class="text-sm font-medium text-gray-800">Çapa Bruce 15 kg</h4>
+<p class="text-xs text-gray-600">1 x 2.850₺</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<img src="https://readdy.ai/api/search-image?query=marine%2525252520rope%252525252C%2525252520blue%2525252520nautical%2525252520rope%252525252C%2525252520boat%2525252520equipment%252525252C%2525252520detailed%2525252520product%2525252520photography%2525252520on%2525252520white%2525252520background%252525252C%2525252520high%2525252520quality%2525252520nautical%2525252520equipment&width=200&height=200&seq=1012&orientation=squarish" alt="Halatlar Set" class="w-16 h-16 object-contain object-top">
+<div>
+<h4 class="text-sm font-medium text-gray-800">Halatlar Set</h4>
+<p class="text-xs text-gray-600">1 x 2.540₺</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Order 4 -->
+<div class="border border-gray-200 rounded-lg overflow-hidden">
+<div class="bg-gray-50 p-4 border-b border-gray-200">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<h3 class="font-medium text-gray-800">Sipariş #DT-2025-05-20-0019</h3>
+<span class="order-status-badge cancelled">
+<i class="ri-close-circle-line"></i>
+İptal Edildi
+</span>
+</div>
+<div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+20 Mayıs 2025
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-bank-card-line"></i>
+</div>
+Kapıda Ödeme
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-price-tag-3-line"></i>
+</div>
+1.750₺
+</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-gray-700 hover:text-primary border border-gray-300 hover:border-primary bg-white hover:bg-primary/5 px-4 py-2 !rounded-button text-sm whitespace-nowrap transition-colors">
+<div class="w-4 h-4 flex items-center justify-center mr-1 inline-block">
+<i class="ri-eye-line"></i>
+</div>
+Detaylar
+</button>
+<button class="text-gray-700 hover:text-primary border border-gray-300 hover:border-primary bg-white hover:bg-primary/5 px-4 py-2 !rounded-button text-sm whitespace-nowrap transition-colors">
+<div class="w-4 h-4 flex items-center justify-center mr-1 inline-block">
+<i class="ri-refresh-line"></i>
+</div>
+Tekrar Sipariş Ver
+</button>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-1 flex flex-col md:flex-row gap-4">
+<div class="flex items-center gap-3">
+<img src="https://readdy.ai/api/search-image?query=marine%2525252520boat%2525252520light%252525252C%2525252520navigation%2525252520light%252525252C%2525252520nautical%2525252520equipment%252525252C%2525252520detailed%2525252520product%2525252520photography%2525252520on%2525252520white%2525252520background%252525252C%2525252520high%2525252520quality%2525252520nautical%2525252520equipment&width=200&height=200&seq=1014&orientation=squarish" alt="Seyir Feneri LED" class="w-16 h-16 object-contain object-top">
+<div>
+<h4 class="text-sm font-medium text-gray-800">Seyir Feneri LED</h4>
+<p class="text-xs text-gray-600">1 x 1.750₺</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Order 5 -->
+<div class="border border-gray-200 rounded-lg overflow-hidden">
+<div class="bg-gray-50 p-4 border-b border-gray-200">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<h3 class="font-medium text-gray-800">Sipariş #DT-2025-05-10-0015</h3>
+<span class="order-status-badge delivered">
+<i class="ri-check-double-line"></i>
+Teslim Edildi
+</span>
+</div>
+<div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+10 Mayıs 2025
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-bank-card-line"></i>
+</div>
+Kredi Kartı
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-price-tag-3-line"></i>
+</div>
+4.350₺
+</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-gray-700 hover:text-primary border border-gray-300 hover:border-primary bg-white hover:bg-primary/5 px-4 py-2 !rounded-button text-sm whitespace-nowrap transition-colors">
+<div class="w-4 h-4 flex items-center justify-center mr-1 inline-block">
+<i class="ri-eye-line"></i>
+</div>
+Detaylar
+</button>
+<button class="text-gray-700 hover:text-primary border border-gray-300 hover:border-primary bg-white hover:bg-primary/5 px-4 py-2 !rounded-button text-sm whitespace-nowrap transition-colors">
+<div class="w-4 h-4 flex items-center justify-center mr-1 inline-block">
+<i class="ri-refresh-line"></i>
+</div>
+Tekrar Sipariş Ver
+</button>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-1 flex flex-col md:flex-row gap-4">
+<div class="flex items-center gap-3">
+<img src="https://readdy.ai/api/search-image?query=marine%2525252520boat%2525252520chair%252525252C%2525252520captain%2525252520seat%252525252C%2525252520nautical%2525252520equipment%252525252C%2525252520detailed%2525252520product%2525252520photography%2525252520on%2525252520white%2525252520background%252525252C%2525252520high%2525252520quality%2525252520nautical%2525252520equipment&width=200&height=200&seq=1016&orientation=squarish" alt="Kaptan Koltuğu Lüks" class="w-16 h-16 object-contain object-top">
+<div>
+<h4 class="text-sm font-medium text-gray-800">Kaptan Koltuğu Lüks</h4>
+<p class="text-xs text-gray-600">1 x 4.350₺</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex justify-between items-center mt-8">
+<div class="text-sm text-gray-600">
+Toplam 12 siparişten 1-5 arası gösteriliyor
+</div>
+<div class="flex items-center space-x-2">
+<button class="pagination-button text-gray-400" disabled>
+<i class="ri-arrow-left-s-line"></i>
+</button>
+<button class="pagination-button active">1</button>
+<button class="pagination-button">2</button>
+<button class="pagination-button">3</button>
+<button class="pagination-button text-gray-600">
+<i class="ri-arrow-right-s-line"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Order Detail Modal (Hidden by default) -->
+<div id="orderDetailModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+<div class="bg-white rounded-lg p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold text-gray-800">Sipariş Detayları</h3>
+<button id="closeOrderDetailModal" class="text-gray-400 hover:text-gray-600">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-close-line ri-lg"></i>
+</div>
+</button>
+</div>
+<div class="mb-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<h3 class="font-medium text-gray-800">Sipariş #DT-2025-06-21-0042</h3>
+<span class="order-status-badge preparing">
+<i class="ri-time-line"></i>
+Hazırlanıyor
+</span>
+</div>
+<div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-600">
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-calendar-line"></i>
+</div>
+21 Haziran 2025
+</span>
+<span class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-bank-card-line"></i>
+</div>
+Kredi Kartı
+</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-gray-700 hover:text-primary border border-gray-300 hover:border-primary bg-white hover:bg-primary/5 px-4 py-2 !rounded-button text-sm whitespace-nowrap transition-colors">
+<div class="w-4 h-4 flex items-center justify-center mr-1 inline-block">
+<i class="ri-printer-line"></i>
+</div>
+Yazdır
+</button>
+<button class="text-gray-700 hover:text-primary border border-gray-300 hover:border-primary bg-white hover:bg-primary/5 px-4 py-2 !rounded-button text-sm whitespace-nowrap transition-colors">
+<div class="w-4 h-4 flex items-center justify-center mr-1 inline-block">
+<i class="ri-download-line"></i>
+</div>
+Fatura İndir
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<h4 class="font-medium text-gray-800 mb-2">Teslimat Adresi</h4>
+<div class="bg-gray-50 p-4 rounded-lg">
+<p class="font-medium text-gray-700 mb-1">Ahmet Yılmaz</p>
+<p class="text-gray-600 text-sm mb-2">+90 532 123 45 67</p>
+<p class="text-gray-600 text-sm">Atatürk Mah. İstiklal Cad. No:42 D:5, Kadıköy, İstanbul, 34700</p>
+</div>
+</div>
+<div>
+<h4 class="font-medium text-gray-800 mb-2">Fatura Adresi</h4>
+<div class="bg-gray-50 p-4 rounded-lg">
+<p class="font-medium text-gray-700 mb-1">Ahmet Yılmaz</p>
+<p class="text-gray-600 text-sm mb-2">T.C. Kimlik No: 12345678901</p>
+<p class="text-gray-600 text-sm">Atatürk Mah. İstiklal Cad. No:42 D:5, Kadıköy, İstanbul, 34700</p>
+</div>
+</div>
+</div>
+<div class="mb-6">
+<h4 class="font-medium text-gray-800 mb-4">Sipariş Özeti</h4>
+<div class="overflow-x-auto">
+<table class="w-full text-sm">
+<thead>
+<tr class="bg-gray-50">
+<th class="px-4 py-3 text-left font-medium text-gray-700">Ürün</th>
+<th class="px-4 py-3 text-center font-medium text-gray-700">Adet</th>
+<th class="px-4 py-3 text-right font-medium text-gray-700">Birim Fiyat</th>
+<th class="px-4 py-3 text-right font-medium text-gray-700">Toplam</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr>
+<td class="px-4 py-4">
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=marine%2525252520compass%252525252C%2525252520ritchie%2525252520navigation%2525252520compass%252525252C%2525252520boat%2525252520dashboard%2525252520instrument%252525252C%2525252520detailed%2525252520product%2525252520photography%2525252520on%2525252520white%2525252520background%252525252C%2525252520high%2525252520quality%2525252520nautical%2525252520equipment&width=200&height=200&seq=1004&orientation=squarish" alt="Ritchie Trek TR-31G Işıklı Pusula" class="w-12 h-12 object-contain object-top mr-3">
+<div>
+<h5 class="font-medium text-gray-800">Ritchie Trek TR-31G Işıklı Pusula</h5>
+<p class="text-xs text-gray-500">Ürün Kodu: RT-31G</p>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 text-center text-gray-700">1</td>
+<td class="px-4 py-4 text-right text-gray-700">2.450₺</td>
+<td class="px-4 py-4 text-right font-medium text-gray-800">2.450₺</td>
+</tr>
+<tr>
+<td class="px-4 py-4">
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=marine%2525252520barometer%252525252C%2525252520brass%2525252520nautical%2525252520barometer%252525252C%2525252520traditional%2525252520ship%2525252520instrument%252525252C%2525252520detailed%2525252520product%2525252520photography%2525252520on%2525252520white%2525252520background%252525252C%2525252520high%2525252520quality%2525252520nautical%2525252520equipment&width=200&height=200&seq=1002&orientation=squarish" alt="VDO Barometre Sarı" class="w-12 h-12 object-contain object-top mr-3">
+<div>
+<h5 class="font-medium text-gray-800">VDO Barometre Sarı</h5>
+<p class="text-xs text-gray-500">Ürün Kodu: VDO-BR-Y</p>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 text-center text-gray-700">1</td>
+<td class="px-4 py-4 text-right text-gray-700">1.850₺</td>
+<td class="px-4 py-4 text-right font-medium text-gray-800">1.850₺</td>
+</tr>
+<tr>
+<td class="px-4 py-4">
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=marine%2525252520boat%2525252520fender%252525252C%2525252520blue%2525252520boat%2525252520bumper%252525252C%2525252520nautical%2525252520equipment%252525252C%2525252520detailed%2525252520product%2525252520photography%2525252520on%2525252520white%2525252520background%252525252C%2525252520high%2525252520quality%2525252520nautical%2525252520equipment&width=200&height=200&seq=1015&orientation=squarish" alt="Usturmaça F2 Mavi" class="w-12 h-12 object-contain object-top mr-3">
+<div>
+<h5 class="font-medium text-gray-800">Usturmaça F2 Mavi</h5>
+<p class="text-xs text-gray-500">Ürün Kodu: UST-F2-M</p>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 text-center text-gray-700">1</td>
+<td class="px-4 py-4 text-right text-gray-700">650₺</td>
+<td class="px-4 py-4 text-right font-medium text-gray-800">650₺</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<h4 class="font-medium text-gray-800 mb-2">Kargo Bilgileri</h4>
+<div class="bg-gray-50 p-4 rounded-lg">
+<p class="flex justify-between mb-2">
+<span class="text-gray-600">Kargo Firması:</span>
+<span class="font-medium text-gray-800">Aras Kargo</span>
+</p>
+<p class="flex justify-between mb-2">
+<span class="text-gray-600">Tahmini Teslimat:</span>
+<span class="font-medium text-gray-800">24-25 Haziran 2025</span>
+</p>
+<p class="flex justify-between">
+<span class="text-gray-600">Takip Numarası:</span>
+<span class="font-medium text-primary">AR123456789TR</span>
+</p>
+</div>
+</div>
+<div>
+<h4 class="font-medium text-gray-800 mb-2">Ödeme Özeti</h4>
+<div class="bg-gray-50 p-4 rounded-lg">
+<p class="flex justify-between mb-2">
+<span class="text-gray-600">Ara Toplam:</span>
+<span class="text-gray-800">4.950₺</span>
+</p>
+<p class="flex justify-between mb-2">
+<span class="text-gray-600">Kargo Ücreti:</span>
+<span class="text-gray-800">45₺</span>
+</p>
+<p class="flex justify-between mb-2">
+<span class="text-gray-600">KDV (18%):</span>
+<span class="text-gray-800">891₺</span>
+</p>
+<p class="flex justify-between pt-2 border-t border-gray-200 mt-2">
+<span class="font-medium text-gray-800">Toplam:</span>
+<span class="font-bold text-primary">5.886₺</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tracking Modal (Hidden by default) -->
+<div id="trackingModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+<div class="bg-white rounded-lg p-6 max-w-2xl w-full mx-4">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold text-gray-800">Kargo Takibi</h3>
+<button id="closeTrackingModal" class="text-gray-400 hover:text-gray-600">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-close-line ri-lg"></i>
+</div>
+</button>
+</div>
+<div class="mb-6">
+<div class="flex items-center gap-3 mb-4">
+<h4 class="font-medium text-gray-800">Sipariş #DT-2025-06-15-0038</h4>
+<span class="order-status-badge shipped">
+<i class="ri-truck-line"></i>
+Kargoda
+</span>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg mb-6">
+<p class="flex justify-between mb-2">
+<span class="text-gray-600">Kargo Firması:</span>
+<span class="font-medium text-gray-800">Yurtiçi Kargo</span>
+</p>
+<p class="flex justify-between mb-2">
+<span class="text-gray-600">Takip Numarası:</span>
+<span class="font-medium text-primary">YK987654321TR</span>
+</p>
+<p class="flex justify-between">
+<span class="text-gray-600">Tahmini Teslimat:</span>
+<span class="font-medium text-gray-800">18-19 Haziran 2025</span>
+</p>
+</div>
+<h4 class="font-medium text-gray-800 mb-4">Kargo Durumu</h4>
+<div class="relative">
+<div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200"></div>
+<div class="space-y-6">
+<div class="relative flex">
+<div class="absolute left-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center z-10">
+<i class="ri-check-line text-white"></i>
+</div>
+<div class="ml-12">
+<h5 class="font-medium text-gray-800">Kargoya Verildi</h5>
+<p class="text-sm text-gray-600 mb-1">16 Haziran 2025, 10:23</p>
+<p class="text-sm text-gray-600">Siparişiniz İstanbul Ataşehir deposundan kargoya verildi.</p>
+</div>
+</div>
+<div class="relative flex">
+<div class="absolute left-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center z-10">
+<i class="ri-check-line text-white"></i>
+</div>
+<div class="ml-12">
+<h5 class="font-medium text-gray-800">Transfer Merkezinde</h5>
+<p class="text-sm text-gray-600 mb-1">16 Haziran 2025, 18:45</p>
+<p class="text-sm text-gray-600">Siparişiniz İstanbul Anadolu Transfer Merkezi'nde işlem görüyor.</p>
+</div>
+</div>
+<div class="relative flex">
+<div class="absolute left-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center z-10">
+<i class="ri-truck-line text-white"></i>
+</div>
+<div class="ml-12">
+<h5 class="font-medium text-gray-800">Dağıtıma Çıktı</h5>
+<p class="text-sm text-gray-600 mb-1">17 Haziran 2025, 09:12</p>
+<p class="text-sm text-gray-600">Siparişiniz Kadıköy şubesinden dağıtıma çıktı.</p>
+</div>
+</div>
+<div class="relative flex">
+<div class="absolute left-0 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center z-10">
+<i class="ri-home-line text-gray-400"></i>
+</div>
+<div class="ml-12">
+<h5 class="font-medium text-gray-400">Teslim Edildi</h5>
+<p class="text-sm text-gray-400 mb-1">Bekleniyor</p>
+<p class="text-sm text-gray-400">Siparişiniz henüz teslim edilmedi.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-between">
+<a href="https://www.yurticikargo.com" target="_blank" class="text-primary hover:text-primary/80 flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-external-link-line"></i>
+</div>
+<span>Kargo Firması Sitesinde Takip Et</span>
+</a>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-2 !rounded-button text-sm whitespace-nowrap">
+Tamam
+</button>
+</div>
+</div>
+</div>
+<!-- Cancel Order Modal (Hidden by default) -->
+<div id="cancelOrderModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+<div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold text-gray-800">Sipariş İptali</h3>
+<button id="closeCancelOrderModal" class="text-gray-400 hover:text-gray-600">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-close-line ri-lg"></i>
+</div>
+</button>
+</div>
+<div class="mb-6">
+<div class="flex items-center gap-3 mb-4">
+<h4 class="font-medium text-gray-800">Sipariş #DT-2025-06-21-0042</h4>
+</div>
+<p class="text-gray-600 mb-6">Bu siparişi iptal etmek istediğinizden emin misiniz? İptal işlemi geri alınamaz.</p>
+<div class="mb-6">
+<label class="block text-sm font-medium text-gray-700 mb-2">İptal Nedeni</label>
+<div class="relative">
+<select class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm appearance-none pr-10">
+<option value="">İptal nedeni seçiniz</option>
+<option value="wrong_product">Yanlış ürün siparişi verdim</option>
+<option value="better_price">Daha uygun fiyat buldum</option>
+<option value="delivery_time">Teslimat süresi çok uzun</option>
+<option value="change_mind">Fikrim değişti</option>
+<option value="other">Diğer</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none text-gray-400">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+<div class="mb-6">
+<label class="block text-sm font-medium text-gray-700 mb-2">Açıklama (İsteğe bağlı)</label>
+<textarea rows="3" placeholder="İptal nedeniniz hakkında daha fazla bilgi verebilirsiniz..." class="w-full px-4 py-2 border border-gray-300 rounded-button text-gray-700 text-sm"></textarea>
+</div>
+</div>
+<div class="flex justify-end space-x-3">
+<button id="cancelCancelOrderModal" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 !rounded-button text-sm whitespace-nowrap">
+Vazgeç
+</button>
+<button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">
+Siparişi İptal Et
+</button>
+</div>
+</div>
+</div>
+<!-- Empty State (Hidden) -->
+<div id="emptyState" class="bg-white rounded-lg shadow-md p-8 text-center hidden">
+<div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+<i class="ri-shopping-bag-line ri-2x text-gray-400"></i>
+</div>
+<h2 class="text-xl font-bold text-gray-800 mb-3">Henüz Siparişiniz Bulunmuyor</h2>
+<p class="text-gray-600 mb-6 max-w-md mx-auto">Siparişleriniz burada görüntülenecektir. Hemen alışverişe başlayarak deniz tutkunuzu yansıtan ürünleri keşfedin.</p>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/d7842858-4a4f-4cf7-acec-bada1b684259" data-readdy="true" class="inline-flex items-center bg-primary hover:bg-primary/90 text-white px-6 py-3 !rounded-button font-medium transition-all duration-200 whitespace-nowrap">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-shopping-cart-line"></i>
+</div>
+Alışverişe Başla
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-800 text-white pt-16 pb-8 mt-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div>
+<div class="flex items-center mb-6">
+<div class="text-white text-3xl font-['Pacifico']">Deniz</div>
+<div class="ml-1 text-gray-300 text-lg">Ticaret</div>
+</div>
+<p class="text-gray-400 mb-6">20 yılı aşkın tecrübemiz ile denizcilik sektöründe kaliteli ve güvenilir ürünlerin adresi.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-twitter-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-linkedin-fill"></i>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Hızlı Erişim</h4>
+<ul class="space-y-3">
+<li><a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/752f4e94-d540-4a96-aaa1-1a7c7c05446d" data-readdy="true" class="text-gray-400 hover:text-white transition-colors duration-200">Anasayfa</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Hakkımızda</a></li>
+<li><a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/d7842858-4a4f-4cf7-acec-bada1b684259" data-readdy="true" class="text-gray-400 hover:text-white transition-colors duration-200">Ürünlerimiz</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Referanslar</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">İletişim</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Ürün Kategorileri</h4>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Navigasyon Ekipmanları</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Güverte Donanımları</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Elektrik & Elektronik</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Güvenlik Ekipmanları</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Dekorasyon & Aksesuar</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Bültenimize Abone Olun</h4>
+<p class="text-gray-400 mb-4">Yeni ürünler ve kampanyalardan haberdar olmak için bültenimize abone olun.</p>
+<div class="flex">
+<input type="email" placeholder="E-posta adresiniz" class="flex-grow px-4 py-2 bg-gray-700 border border-gray-600 rounded-l-button text-white focus:outline-none focus:border-primary">
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-r-button whitespace-nowrap">Abone Ol</button>
+</div>
+<div class="mt-6">
+<h5 class="font-medium mb-3">Ödeme Yöntemleri</h5>
+<div class="flex space-x-3">
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-visa-fill ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-mastercard-fill ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-paypal-fill ri-lg"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-700 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 Deniz Ticaret. Tüm hakları saklıdır.</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-200">Gizlilik Politikası</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-200">Kullanım Koşulları</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-200">Çerez Politikası</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script id="orderDetails">
+document.addEventListener('DOMContentLoaded', function() {
+// Order Detail Modal
+const detailButtons = document.querySelectorAll('button:has(.ri-eye-line)');
+const orderDetailModal = document.getElementById('orderDetailModal');
+const closeOrderDetailModal = document.getElementById('closeOrderDetailModal');
+detailButtons.forEach(button => {
+button.addEventListener('click', function() {
+orderDetailModal.classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+});
+});
+closeOrderDetailModal.addEventListener('click', function() {
+orderDetailModal.classList.add('hidden');
+document.body.style.overflow = '';
+});
+orderDetailModal.addEventListener('click', function(e) {
+if (e.target === orderDetailModal) {
+orderDetailModal.classList.add('hidden');
+document.body.style.overflow = '';
+}
+});
+});
+</script>
+<script id="trackingModal">
+document.addEventListener('DOMContentLoaded', function() {
+// Tracking Modal
+const trackButtons = document.querySelectorAll('button:has(.ri-truck-line)');
+const trackingModal = document.getElementById('trackingModal');
+const closeTrackingModal = document.getElementById('closeTrackingModal');
+trackButtons.forEach(button => {
+button.addEventListener('click', function() {
+trackingModal.classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+});
+});
+closeTrackingModal.addEventListener('click', function() {
+trackingModal.classList.add('hidden');
+document.body.style.overflow = '';
+});
+trackingModal.addEventListener('click', function(e) {
+if (e.target === trackingModal) {
+trackingModal.classList.add('hidden');
+document.body.style.overflow = '';
+}
+});
+// Close with "Tamam" button
+const okButton = trackingModal.querySelector('button.bg-primary');
+okButton.addEventListener('click', function() {
+trackingModal.classList.add('hidden');
+document.body.style.overflow = '';
+});
+});
+</script>
+<script id="cancelOrder">
+document.addEventListener('DOMContentLoaded', function() {
+// Cancel Order Modal
+const cancelButtons = document.querySelectorAll('button:has(.ri-close-line)');
+const cancelOrderModal = document.getElementById('cancelOrderModal');
+const closeCancelOrderModal = document.getElementById('closeCancelOrderModal');
+const cancelCancelOrderModal = document.getElementById('cancelCancelOrderModal');
+cancelButtons.forEach(button => {
+if (button.closest('.fixed')) return; // Skip buttons in modals
+button.addEventListener('click', function() {
+cancelOrderModal.classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+});
+});
+closeCancelOrderModal.addEventListener('click', function() {
+cancelOrderModal.classList.add('hidden');
+document.body.style.overflow = '';
+});
+cancelCancelOrderModal.addEventListener('click', function() {
+cancelOrderModal.classList.add('hidden');
+document.body.style.overflow = '';
+});
+cancelOrderModal.addEventListener('click', function(e) {
+if (e.target === cancelOrderModal) {
+cancelOrderModal.classList.add('hidden');
+document.body.style.overflow = '';
+}
+});
+});
+</script>
+<script id="tabSwitching">
+document.addEventListener('DOMContentLoaded', function() {
+// Tab Switching
+const tabButtons = document.querySelectorAll('.tab-button');
+tabButtons.forEach(button => {
+button.addEventListener('click', function() {
+// Remove active class from all tabs
+tabButtons.forEach(tab => {
+tab.classList.remove('active');
+tab.classList.remove('text-primary');
+tab.classList.add('text-gray-500');
+});
+// Add active class to clicked tab
+this.classList.add('active');
+this.classList.add('text-primary');
+this.classList.remove('text-gray-500');
+// Here you would typically update the content based on the selected tab
+// For this demo, we'll just keep showing the same orders
+});
+});
+});
+</script>
+<script id="datePicker">
+document.addEventListener('DOMContentLoaded', function() {
+// Simple date picker functionality
+const dateInput = document.querySelector('.date-range-picker input');
+dateInput.addEventListener('focus', function() {
+// In a real implementation, this would show a date picker
+// For this demo, we'll just add a placeholder date when clicked
+if (!this.value) {
+this.value = '01.06.2025 - 21.06.2025';
+}
+});
+});
+</script>
+<script id="pagination">
+document.addEventListener('DOMContentLoaded', function() {
+// Pagination functionality
+const paginationButtons = document.querySelectorAll('.pagination-button');
+paginationButtons.forEach(button => {
+if (button.disabled) return;
+button.addEventListener('click', function() {
+// Remove active class from all pagination buttons
+paginationButtons.forEach(btn => {
+if (!btn.disabled && !btn.querySelector('i')) {
+btn.classList.remove('active');
+}
+});
+// Add active class to clicked button if it's a number
+if (!this.querySelector('i')) {
+this.classList.add('active');
+}
+// Here you would typically update the content based on the selected page
+// For this demo, we'll just keep showing the same orders
+});
+});
+});
+</script>
+</body>
+</html>

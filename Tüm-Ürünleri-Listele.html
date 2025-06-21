@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tüm Ürünler - Deniz Ticaret</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+tailwind.config={
+theme:{
+extend:{
+colors:{
+primary:'#0099cc',
+secondary:'#005580'
+},
+borderRadius:{
+'none':'0px',
+'sm':'4px',
+DEFAULT:'8px',
+'md':'12px',
+'lg':'16px',
+'xl':'20px',
+'2xl':'24px',
+'3xl':'32px',
+'full':'9999px',
+'button':'8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+input:focus {
+outline: none;
+}
+.product-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 18px;
+height: 18px;
+background: #0099cc;
+border-radius: 50%;
+cursor: pointer;
+}
+input[type="range"] {
+-webkit-appearance: none;
+appearance: none;
+height: 6px;
+background: #e5e7eb;
+border-radius: 999px;
+}
+input[type="checkbox"] {
+display: none;
+}
+.custom-checkbox {
+display: inline-block;
+width: 20px;
+height: 20px;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+position: relative;
+cursor: pointer;
+transition: all 0.2s;
+}
+input[type="checkbox"]:checked + .custom-checkbox {
+background-color: #0099cc;
+border-color: #0099cc;
+}
+input[type="checkbox"]:checked + .custom-checkbox::after {
+content: '';
+position: absolute;
+left: 6px;
+top: 2px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.category-filter.active {
+background-color: #0099cc;
+color: white;
+}
+</style>
+</head>
+<body class="bg-gray-50 font-sans">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white shadow-md">
+<div class="container mx-auto px-4">
+<div class="flex items-center justify-between py-4">
+<!-- Logo -->
+<div class="flex items-center">
+<a href="#" class="flex items-center">
+<div class="text-primary text-3xl font-['Pacifico']">Deniz</div>
+<div class="ml-1 text-gray-700 text-lg">Ticaret</div>
+</a>
+</div>
+<!-- Navigation -->
+<nav class="hidden md:flex space-x-8">
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/752f4e94-d540-4a96-aaa1-1a7c7c05446d" data-readdy="true" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">ANASAYFA</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">KURUMSAL</a>
+<a href="#" class="text-primary font-medium transition-colors duration-200 border-b-2 border-primary pb-1">ÜRÜNLER</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">DEKOR VE HEDİYELİK</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors duration-200">İLETİŞİM</a>
+</nav>
+<!-- Search and Language -->
+<div class="flex items-center space-x-4">
+<div class="hidden md:flex items-center bg-gray-100 rounded-button overflow-hidden">
+<input type="text" placeholder="Ürün arayın..." class="bg-transparent border-none px-4 py-2 text-sm w-48">
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap">
+<i class="ri-search-line"></i>
+</button>
+</div>
+<div class="flex items-center space-x-2">
+<a href="#" class="text-gray-700 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-global-line ri-lg"></i>
+</div>
+</a>
+</div>
+<button class="md:hidden w-10 h-10 flex items-center justify-center">
+<i class="ri-menu-line ri-xl"></i>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Title & Search -->
+<section class="bg-gray-100 py-8">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<div>
+<h1 class="text-3xl font-bold text-gray-800 mb-2">Tüm Ürünler</h1>
+<p class="text-gray-600">Denizcilik ve tekne ekipmanları kategorisindeki tüm ürünlerimiz</p>
+</div>
+<div class="mt-4 md:mt-0">
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/752f4e94-d540-4a96-aaa1-1a7c7c05446d" data-readdy="true" class="flex items-center text-primary hover:text-secondary transition-colors">
+<i class="ri-arrow-left-line mr-1"></i>
+<span>Anasayfaya Dön</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Search & Filter Section -->
+<section class="py-6 border-b border-gray-200">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row gap-4">
+<div class="w-full md:w-2/3 relative">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<input type="text" id="productSearch" placeholder="Ürün adı veya kodu ile arama yapın..." class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-button focus:border-primary transition-colors duration-200 text-sm">
+</div>
+</div>
+<div class="w-full md:w-1/3 flex gap-2">
+<div class="w-1/2">
+<select id="sortSelect" class="w-full px-4 py-3 border border-gray-300 rounded-button focus:border-primary transition-colors duration-200 text-sm appearance-none pr-8 bg-white cursor-pointer">
+<option value="popular">Popülerliğe Göre</option>
+<option value="priceAsc">Fiyat (Artan)</option>
+<option value="priceDesc">Fiyat (Azalan)</option>
+<option value="newest">Yeniden Eskiye</option>
+</select>
+</div>
+<div class="w-1/2">
+<button id="filterToggle" class="w-full flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-button hover:bg-gray-50 transition-colors duration-200 text-sm">
+<i class="ri-filter-3-line"></i>
+<span>Filtrele</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Filters -->
+<section class="py-4 border-b border-gray-200 overflow-x-auto">
+<div class="container mx-auto px-4">
+<div class="flex space-x-2 min-w-max">
+<button class="category-filter active px-4 py-2 !rounded-button border border-gray-300 font-medium transition-all duration-200 whitespace-nowrap text-sm">Tüm Ürünler</button>
+<button class="category-filter px-4 py-2 !rounded-button border border-gray-300 font-medium transition-all duration-200 whitespace-nowrap text-sm">Navigasyon</button>
+<button class="category-filter px-4 py-2 !rounded-button border border-gray-300 font-medium transition-all duration-200 whitespace-nowrap text-sm">Güverte Donanımları</button>
+<button class="category-filter px-4 py-2 !rounded-button border border-gray-300 font-medium transition-all duration-200 whitespace-nowrap text-sm">Elektronik</button>
+<button class="category-filter px-4 py-2 !rounded-button border border-gray-300 font-medium transition-all duration-200 whitespace-nowrap text-sm">Güvenlik Ekipmanları</button>
+<button class="category-filter px-4 py-2 !rounded-button border border-gray-300 font-medium transition-all duration-200 whitespace-nowrap text-sm">Dekorasyon</button>
+<button class="category-filter px-4 py-2 !rounded-button border border-gray-300 font-medium transition-all duration-200 whitespace-nowrap text-sm">Aydınlatma</button>
+<button class="category-filter px-4 py-2 !rounded-button border border-gray-300 font-medium transition-all duration-200 whitespace-nowrap text-sm">Bakım Ürünleri</button>
+</div>
+</div>
+</section>
+<!-- Filter Panel -->
+<section id="filterPanel" class="py-4 border-b border-gray-200 hidden">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div>
+<h3 class="font-medium text-gray-800 mb-3">Fiyat Aralığı</h3>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between">
+<span class="text-sm text-gray-600">₺<span id="minPriceDisplay">0</span></span>
+<span class="text-sm text-gray-600">₺<span id="maxPriceDisplay">10000</span></span>
+</div>
+<input type="range" id="priceRange" min="0" max="10000" step="100" value="10000" class="w-full">
+<div class="flex gap-2 mt-2">
+<div class="relative flex-1">
+<input type="number" id="minPrice" placeholder="Min" class="w-full px-3 py-2 border border-gray-300 rounded-button text-sm">
+<span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm">₺</span>
+</div>
+<div class="relative flex-1">
+<input type="number" id="maxPrice" placeholder="Max" class="w-full px-3 py-2 border border-gray-300 rounded-button text-sm">
+<span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm">₺</span>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="font-medium text-gray-800 mb-3">Marka</h3>
+<div class="grid grid-cols-2 gap-2">
+<div class="flex items-center">
+<input type="checkbox" id="brand1" class="brand-checkbox">
+<label for="brand1" class="custom-checkbox"></label>
+<label for="brand1" class="ml-2 text-sm text-gray-700 cursor-pointer">Ritchie</label>
+</div>
+<div class="flex items-center">
+<input type="checkbox" id="brand2" class="brand-checkbox">
+<label for="brand2" class="custom-checkbox"></label>
+<label for="brand2" class="ml-2 text-sm text-gray-700 cursor-pointer">Hors</label>
+</div>
+<div class="flex items-center">
+<input type="checkbox" id="brand3" class="brand-checkbox">
+<label for="brand3" class="custom-checkbox"></label>
+<label for="brand3" class="ml-2 text-sm text-gray-700 cursor-pointer">VDO</label>
+</div>
+<div class="flex items-center">
+<input type="checkbox" id="brand4" class="brand-checkbox">
+<label for="brand4" class="custom-checkbox"></label>
+<label for="brand4" class="ml-2 text-sm text-gray-700 cursor-pointer">Lewmar</label>
+</div>
+<div class="flex items-center">
+<input type="checkbox" id="brand5" class="brand-checkbox">
+<label for="brand5" class="custom-checkbox"></label>
+<label for="brand5" class="ml-2 text-sm text-gray-700 cursor-pointer">Garmin</label>
+</div>
+<div class="flex items-center">
+<input type="checkbox" id="brand6" class="brand-checkbox">
+<label for="brand6" class="custom-checkbox"></label>
+<label for="brand6" class="ml-2 text-sm text-gray-700 cursor-pointer">Raymarine</label>
+</div>
+</div>
+</div>
+<div>
+<h3 class="font-medium text-gray-800 mb-3">Stok Durumu</h3>
+<div class="flex flex-col gap-2">
+<div class="flex items-center">
+<input type="checkbox" id="inStock" class="stock-checkbox">
+<label for="inStock" class="custom-checkbox"></label>
+<label for="inStock" class="ml-2 text-sm text-gray-700 cursor-pointer">Stokta Var</label>
+</div>
+<div class="flex items-center">
+<input type="checkbox" id="outOfStock" class="stock-checkbox">
+<label for="outOfStock" class="custom-checkbox"></label>
+<label for="outOfStock" class="ml-2 text-sm text-gray-700 cursor-pointer">Stokta Yok</label>
+</div>
+</div>
+<div class="mt-6 flex justify-end">
+<button id="applyFilters" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button font-medium transition-all duration-200 whitespace-nowrap text-sm">Filtreleri Uygula</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Products Grid -->
+<section class="py-8">
+<div class="container mx-auto px-4">
+<div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<!-- Product 1 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520winch%252520equipment%252C%252520stainless%252520steel%252520boat%252520winch%252C%252520professional%252520marine%252520hardware%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1001&orientation=squarish" alt="Paslanmaz El Vinci" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Paslanmaz El Vinci</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Dayanıklı paslanmaz çelik, kolay kullanım, tekne ve yatlar için ideal, yüksek performans</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">2950₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520barometer%252C%252520brass%252520nautical%252520barometer%252C%252520traditional%252520ship%252520instrument%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1002&orientation=squarish" alt="VDO Barometre Sarı" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">VDO Barometre Sarı</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Hassas ölçüm, klasik tasarım, pirinç kaplama, atmosfer basıncını doğru ölçme</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">1850₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520compass%252C%252520small%252520boat%252520compass%252C%252520nautical%252520navigation%252520instrument%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1003&orientation=squarish" alt="Mini-C Dönmez Pusula" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Mini-C Dönmez Pusula</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Kompakt boyut, yüksek hassasiyet, su geçirmez, kolay montaj, gece görüşü</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">1250₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520compass%252C%252520ritchie%252520navigation%252520compass%252C%252520boat%252520dashboard%252520instrument%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1004&orientation=squarish" alt="Ritchie Trek TR-31G Işıklı Pusula" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Ritchie Trek TR-31G Işıklı Pusula</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Gece görüşü, su geçirmez yapı, yüksek hassasiyet, LED aydınlatma</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">2450₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 5 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520compass%252C%252520black%252520boat%252520compass%252C%252520professional%252520navigation%252520instrument%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1005&orientation=squarish" alt="Hors Pusula Beyaz" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Hors Pusula Beyaz</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Modern tasarım, kolay montaj, yüksek dayanıklılık, su geçirmez yapı</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">1750₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 6 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=wooden%252520ship%252520wheel%252C%252520traditional%252520boat%252520steering%252520wheel%252C%252520nautical%252520decor%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1006&orientation=squarish" alt="Dümen Simidi Tipo 1" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Dümen Simidi Tipo 1</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Klasik ahşap tasarım, dekoratif, yüksek kalite, el işçiliği, antik görünüm</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">3250₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 7 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=stainless%252520steel%252520boat%252520hinge%252C%252520marine%252520door%252520hinge%252C%252520nautical%252520hardware%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1007&orientation=squarish" alt="Menteşeli Burun Makarası" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Menteşeli Burun Makarası</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">En:75 mm Boy:450 mm, paslanmaz çelik, korozyona dayanıklı, uzun ömürlü</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">1450₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 8 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=stainless%252520steel%252520boat%252520cleat%252C%252520marine%252520hardware%252C%252520nautical%252520equipment%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1008&orientation=squarish" alt="Burun Makarası En:80 mm Boy:450 mm" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Burun Makarası En:80 mm Boy:450 mm</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Paslanmaz çelik, dayanıklı yapı, kolay montaj, profesyonel kullanım</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">1650₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 9 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520anchor%252C%252520stainless%252520steel%252520boat%252520anchor%252C%252520nautical%252520equipment%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1009&orientation=squarish" alt="Çapa 10kg Paslanmaz" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Çapa 10kg Paslanmaz</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Yüksek tutuş gücü, korozyona dayanıklı, profesyonel kullanım için ideal</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">4250₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 10 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520navigation%252520light%252C%252520boat%252520LED%252520light%252C%252520nautical%252520equipment%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1010&orientation=squarish" alt="LED Seyir Feneri" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">LED Seyir Feneri</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Düşük enerji tüketimi, uzun ömür, yüksek parlaklık, su geçirmez</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">1350₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 11 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520binoculars%252C%252520waterproof%252520boat%252520binoculars%252C%252520nautical%252520equipment%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1011&orientation=squarish" alt="Deniz Dürbünü 7x50" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Deniz Dürbünü 7x50</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Su geçirmez, yüksek optik kalite, pusula özellikli, darbeye dayanıklı</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">3750₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 12 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520life%252520jacket%252C%252520orange%252520boat%252520safety%252520vest%252C%252520nautical%252520equipment%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1012&orientation=squarish" alt="Can Yeleği Yetişkin" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Can Yeleği Yetişkin</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Yüksek görünürlük, ayarlanabilir kayışlar, yüksek yüzdürme kapasitesi</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">950₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 13 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520boat%252520horn%252C%252520stainless%252520steel%252520signal%252520horn%252C%252520nautical%252520equipment%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1013&orientation=squarish" alt="Paslanmaz Çelik Korna" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Paslanmaz Çelik Korna</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Yüksek ses seviyesi, korozyona dayanıklı, kolay montaj, uzun ömürlü</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">1150₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 14 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520boat%252520ladder%252C%252520stainless%252520steel%252520folding%252520ladder%252C%252520nautical%252520equipment%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1014&orientation=squarish" alt="Katlanır Tekne Merdiveni" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Katlanır Tekne Merdiveni</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Paslanmaz çelik, 4 basamaklı, kolay montaj, dayanıklı yapı</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">2850₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 15 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520boat%252520fender%252C%252520blue%252520boat%252520bumper%252C%252520nautical%252520equipment%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1015&orientation=squarish" alt="Usturmaça F2 Mavi" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Usturmaça F2 Mavi</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Yüksek darbe emilimi, UV korumalı, dayanıklı PVC malzeme, halat dahil</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">650₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 16 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520boat%252520rope%252C%252520nautical%252520dock%252520line%252C%252520nautical%252520equipment%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1016&orientation=squarish" alt="Bağlama Halatı 12mm x 10m" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Bağlama Halatı 12mm x 10m</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Yüksek dayanıklılık, UV korumalı, esnek yapı, çeşitli renk seçenekleri</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">750₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 17 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520boat%252520cleaner%252C%252520nautical%252520cleaning%252520product%252C%252520nautical%252520equipment%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1017&orientation=squarish" alt="Tekne Temizleme Şampuanı 1L" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Tekne Temizleme Şampuanı 1L</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Tuzlu su kalıntılarını giderir, çevre dostu formül, yoğun temizleme gücü</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">450₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 18 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520boat%252520polish%252C%252520nautical%252520wax%252520product%252C%252520nautical%252520equipment%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1018&orientation=squarish" alt="Tekne Cilası 500ml" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Tekne Cilası 500ml</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">UV koruma, uzun süreli parlaklık, kolay uygulama, tüm yüzeylere uygun</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">550₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 19 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520boat%252520light%252C%252520cabin%252520interior%252520light%252C%252520nautical%252520equipment%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1019&orientation=squarish" alt="Kabin İç Aydınlatma LED" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Kabin İç Aydınlatma LED</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Düşük enerji tüketimi, şık tasarım, kolay montaj, ayarlanabilir parlaklık</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">850₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 20 -->
+<div class="product-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+<div class="p-4">
+<img src="https://readdy.ai/api/search-image?query=marine%252520boat%252520flag%252C%252520nautical%252520signal%252520flag%252C%252520nautical%252520equipment%252C%252520detailed%252520product%252520photography%252520on%252520white%252520background%252C%252520high%252520quality%252520nautical%252520equipment&width=300&height=300&seq=1020&orientation=squarish" alt="Türk Bayrağı 50x75cm" class="w-full h-48 object-contain object-top">
+<div class="pt-4">
+<h3 class="text-lg font-semibold text-gray-800">Türk Bayrağı 50x75cm</h3>
+<p class="text-gray-600 text-sm mt-1 line-clamp-2">Yüksek kalite kumaş, solmaya dayanıklı, tekne kullanımına uygun, dayanıklı</p>
+<div class="mt-3 flex justify-between items-center">
+<span class="font-bold text-gray-900">350₺</span>
+<a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/e5817c01-b42c-4b43-82d1-9998b26e88e3" data-readdy="true" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap">Detay</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State (Hidden by default) -->
+<div id="emptyState" class="hidden py-16 text-center">
+<div class="w-20 h-20 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
+<div class="w-10 h-10 flex items-center justify-center text-gray-400">
+<i class="ri-search-line ri-2x"></i>
+</div>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 mb-2">Ürün Bulunamadı</h3>
+<p class="text-gray-600 mb-6">Arama kriterlerinize uygun ürün bulunamadı. Lütfen farklı anahtar kelimeler deneyiniz.</p>
+<button id="resetFilters" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-3 !rounded-button font-medium transition-all duration-200 whitespace-nowrap">Filtreleri Temizle</button>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center">
+<nav class="flex items-center space-x-1">
+<a href="#" class="px-3 py-2 border border-gray-300 rounded-button text-gray-600 hover:bg-gray-50 transition-colors duration-200">
+<i class="ri-arrow-left-s-line"></i>
+</a>
+<a href="#" class="px-4 py-2 border border-gray-300 rounded-button text-gray-600 hover:bg-gray-50 transition-colors duration-200">1</a>
+<a href="#" class="px-4 py-2 bg-primary text-white border border-primary rounded-button transition-colors duration-200">2</a>
+<a href="#" class="px-4 py-2 border border-gray-300 rounded-button text-gray-600 hover:bg-gray-50 transition-colors duration-200">3</a>
+<a href="#" class="px-4 py-2 border border-gray-300 rounded-button text-gray-600 hover:bg-gray-50 transition-colors duration-200">4</a>
+<a href="#" class="px-4 py-2 border border-gray-300 rounded-button text-gray-600 hover:bg-gray-50 transition-colors duration-200">5</a>
+<a href="#" class="px-3 py-2 border border-gray-300 rounded-button text-gray-600 hover:bg-gray-50 transition-colors duration-200">
+<i class="ri-arrow-right-s-line"></i>
+</a>
+</nav>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-800 text-white pt-16 pb-8 mt-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div>
+<div class="flex items-center mb-6">
+<div class="text-white text-3xl font-['Pacifico']">Deniz</div>
+<div class="ml-1 text-gray-300 text-lg">Ticaret</div>
+</div>
+<p class="text-gray-400 mb-6">20 yılı aşkın tecrübemiz ile denizcilik sektöründe kaliteli ve güvenilir ürünlerin adresi.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-twitter-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-linkedin-fill"></i>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Hızlı Erişim</h4>
+<ul class="space-y-3">
+<li><a href="https://readdy.ai/home/52b83b16-a3b0-472a-b646-8a5c653312c5/752f4e94-d540-4a96-aaa1-1a7c7c05446d" data-readdy="true" class="text-gray-400 hover:text-white transition-colors duration-200">Anasayfa</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Hakkımızda</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Ürünlerimiz</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Referanslar</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">İletişim</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Ürün Kategorileri</h4>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Navigasyon Ekipmanları</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Güverte Donanımları</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Elektrik & Elektronik</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Güvenlik Ekipmanları</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">Dekorasyon & Aksesuar</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Bültenimize Abone Olun</h4>
+<p class="text-gray-400 mb-4">Yeni ürünler ve kampanyalardan haberdar olmak için bültenimize abone olun.</p>
+<div class="flex">
+<input type="email" placeholder="E-posta adresiniz" class="flex-grow px-4 py-2 bg-gray-700 border border-gray-600 rounded-l-button text-white focus:outline-none focus:border-primary">
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-button whitespace-nowrap">Abone Ol</button>
+</div>
+<div class="mt-6">
+<h5 class="font-medium mb-3">Ödeme Yöntemleri</h5>
+<div class="flex space-x-3">
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-visa-fill ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-mastercard-fill ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-400">
+<i class="ri-paypal-fill ri-lg"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-700 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 Deniz Ticaret. Tüm hakları saklıdır.</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-200">Gizlilik Politikası</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-200">Kullanım Koşulları</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-200">Çerez Politikası</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script id="categoryFilters">
+document.addEventListener('DOMContentLoaded', function() {
+const categoryFilters = document.querySelectorAll('.category-filter');
+categoryFilters.forEach(filter => {
+filter.addEventListener('click', function() {
+categoryFilters.forEach(f => f.classList.remove('active'));
+this.classList.add('active');
+});
+});
+});
+</script>
+<script id="filterToggle">
+document.addEventListener('DOMContentLoaded', function() {
+const filterToggleBtn = document.getElementById('filterToggle');
+const filterPanel = document.getElementById('filterPanel');
+filterToggleBtn.addEventListener('click', function() {
+filterPanel.classList.toggle('hidden');
+});
+});
+</script>
+<script id="priceRangeFilter">
+document.addEventListener('DOMContentLoaded', function() {
+const priceRange = document.getElementById('priceRange');
+const minPriceDisplay = document.getElementById('minPriceDisplay');
+const maxPriceDisplay = document.getElementById('maxPriceDisplay');
+const minPriceInput = document.getElementById('minPrice');
+const maxPriceInput = document.getElementById('maxPrice');
+// Initial values
+minPriceInput.value = 0;
+maxPriceInput.value = 10000;
+priceRange.addEventListener('input', function() {
+maxPriceDisplay.textContent = this.value;
+maxPriceInput.value = this.value;
+});
+minPriceInput.addEventListener('input', function() {
+minPriceDisplay.textContent = this.value;
+});
+maxPriceInput.addEventListener('input', function() {
+maxPriceDisplay.textContent = this.value;
+priceRange.value = this.value;
+});
+});
+</script>
+<script id="productSearch">
+document.addEventListener('DOMContentLoaded', function() {
+const searchInput = document.getElementById('productSearch');
+const productsGrid = document.getElementById('productsGrid');
+const emptyState = document.getElementById('emptyState');
+const resetFiltersBtn = document.getElementById('resetFilters');
+const productCards = document.querySelectorAll('.product-card');
+searchInput.addEventListener('input', function() {
+const searchTerm = this.value.toLowerCase().trim();
+let foundProducts = false;
+productCards.forEach(card => {
+const title = card.querySelector('h3').textContent.toLowerCase();
+const description = card.querySelector('p').textContent.toLowerCase();
+if (title.includes(searchTerm) || description.includes(searchTerm) || searchTerm === '') {
+card.classList.remove('hidden');
+foundProducts = true;
+} else {
+card.classList.add('hidden');
+}
+});
+if (foundProducts) {
+productsGrid.classList.remove('hidden');
+emptyState.classList.add('hidden');
+} else {
+productsGrid.classList.add('hidden');
+emptyState.classList.remove('hidden');
+}
+});
+resetFiltersBtn.addEventListener('click', function() {
+searchInput.value = '';
+productCards.forEach(card => {
+card.classList.remove('hidden');
+});
+productsGrid.classList.remove('hidden');
+emptyState.classList.add('hidden');
+});
+});
+</script>
+<script id="applyFilters">
+document.addEventListener('DOMContentLoaded', function() {
+const applyFiltersBtn = document.getElementById('applyFilters');
+const filterPanel = document.getElementById('filterPanel');
+applyFiltersBtn.addEventListener('click', function() {
+filterPanel.classList.add('hidden');
+// Here you would normally apply the filters to the products
+// For demo purposes, we'll just hide the filter panel
+});
+});
+</script>
+<script id="sortProducts">
+document.addEventListener('DOMContentLoaded', function() {
+const sortSelect = document.getElementById('sortSelect');
+const productsGrid = document.getElementById('productsGrid');
+const productCards = Array.from(document.querySelectorAll('.product-card'));
+sortSelect.addEventListener('change', function() {
+const sortValue = this.value;
+productCards.sort((a, b) => {
+const priceA = parseInt(a.querySelector('.font-bold').textContent.replace(/[^0-9]/g, ''));
+const priceB = parseInt(b.querySelector('.font-bold').textContent.replace(/[^0-9]/g, ''));
+if (sortValue === 'priceAsc') {
+return priceA - priceB;
+} else if (sortValue === 'priceDesc') {
+return priceB - priceA;
+} else {
+// For other sort options, we would need more data
+// For now, return to original order
+return 0;
+}
+});
+// Clear the grid and append sorted cards
+productsGrid.innerHTML = '';
+productCards.forEach(card => {
+productsGrid.appendChild(card);
+});
+});
+});
+</script>
+</body>
+</html>
